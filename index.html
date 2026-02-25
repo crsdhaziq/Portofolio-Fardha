@@ -1,0 +1,1184 @@
+<!doctype html>
+<html lang="en" class="h-full scroll-smooth">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Professional Portfolio - IT Support &amp; Graphic Designer">
+  <title>Portofolio Fardha</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            poppins: ['Poppins', 'sans-serif']
+          },
+          colors: {
+            dark: {
+              900: '#0a0a0f',
+              800: '#12121a',
+              700: '#1a1a25',
+              600: '#252532'
+            },
+            electric: {
+              400: '#60a5fa',
+              500: '#3b82f6',
+              600: '#2563eb'
+            },
+            purple: {
+              400: '#a78bfa',
+              500: '#8b5cf6',
+              600: '#7c3aed'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    * { font-family: 'Poppins', sans-serif; }
+    html { height: 100%; }
+    body { height: 100%; }
+    
+    /* Custom scrollbar */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #12121a; }
+    ::-webkit-scrollbar-thumb { background: linear-gradient(180deg, #3b82f6, #8b5cf6); border-radius: 4px; }
+    
+    /* Gradient text */
+    .gradient-text {
+      background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 50%, #f472b6 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    /* Glow effects */
+    .glow-blue { box-shadow: 0 0 40px rgba(59, 130, 246, 0.5); }
+    .glow-purple { box-shadow: 0 0 40px rgba(139, 92, 246, 0.5); }
+    .glow-text { text-shadow: 0 0 30px rgba(59, 130, 246, 0.5); }
+    
+    /* Gradient border */
+    .gradient-border {
+      position: relative;
+      background: #12121a;
+    }
+    .gradient-border::before {
+      content: '';
+      position: absolute;
+      inset: -2px;
+      background: linear-gradient(135deg, #3b82f6, #8b5cf6, #f472b6);
+      border-radius: inherit;
+      z-index: -1;
+    }
+    
+    /* Profile ring */
+    .profile-ring {
+      background: linear-gradient(135deg, #3b82f6, #8b5cf6, #f472b6, #3b82f6);
+      background-size: 300% 300%;
+      animation: gradient-rotate 4s ease infinite;
+      padding: 4px;
+      border-radius: 50%;
+    }
+    
+    @keyframes gradient-rotate {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+    
+    /* Floating animation */
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+    }
+    .animate-float { animation: float 6s ease-in-out infinite; }
+    
+    /* Particle background */
+    .particles {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+    .particle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: rgba(139, 92, 246, 0.6);
+      border-radius: 50%;
+      animation: particle-float 15s infinite;
+    }
+    @keyframes particle-float {
+      0%, 100% { transform: translateY(100%) translateX(0); opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { transform: translateY(-100%) translateX(100px); opacity: 0; }
+    }
+    
+    /* Scroll indicator */
+    @keyframes scroll-bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(10px); }
+    }
+    .scroll-indicator { animation: scroll-bounce 2s ease-in-out infinite; }
+    
+    /* Fade in animations */
+    .fade-in { opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+    .fade-in-left { opacity: 0; transform: translateX(-50px); transition: all 0.8s ease; }
+    .fade-in-left.visible { opacity: 1; transform: translateX(0); }
+    .fade-in-right { opacity: 0; transform: translateX(50px); transition: all 0.8s ease; }
+    .fade-in-right.visible { opacity: 1; transform: translateX(0); }
+    
+    /* Skill bar animation */
+    .skill-bar { width: 0; transition: width 1.5s ease-out; }
+    .skill-bar.animated { width: var(--skill-width); }
+    
+    /* Card hover effects */
+    .card-hover {
+      transition: all 0.4s ease;
+    }
+    .card-hover:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(139, 92, 246, 0.2);
+    }
+    
+    /* Timeline */
+    .timeline-line {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 2px;
+      height: 100%;
+      background: linear-gradient(180deg, #3b82f6, #8b5cf6);
+    }
+    
+    /* Gallery hover */
+    .gallery-item:hover .gallery-overlay {
+      opacity: 1;
+    }
+    .gallery-item:hover img {
+      transform: scale(1.1);
+    }
+    
+    /* Modal */
+    .modal {
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+    .modal.active {
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    /* Navbar blur */
+    .nav-blur {
+      backdrop-filter: blur(20px);
+      background: rgba(10, 10, 15, 0.8);
+    }
+    
+    /* Button glow on hover */
+    .btn-glow:hover {
+      box-shadow: 0 0 30px rgba(59, 130, 246, 0.6);
+    }
+    
+    /* Counter animation */
+    .counter { display: inline-block; }
+    
+    /* Loading screen */
+    .loading-screen {
+      position: fixed;
+      inset: 0;
+      background: #0a0a0f;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      transition: opacity 0.5s ease, visibility 0.5s ease;
+    }
+    .loading-screen.hidden {
+      opacity: 0;
+      visibility: hidden;
+    }
+    .loader {
+      width: 60px;
+      height: 60px;
+      border: 3px solid #1a1a25;
+      border-top-color: #8b5cf6;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    
+    /* Circular progress */
+    .circular-progress {
+      transform: rotate(-90deg);
+    }
+    .circular-progress circle {
+      stroke-dasharray: 251;
+      stroke-dashoffset: 251;
+      transition: stroke-dashoffset 1.5s ease-out;
+    }
+    
+    /* Light mode */
+    .light-mode {
+      --bg-primary: #f8fafc;
+      --bg-secondary: #e2e8f0;
+      --text-primary: #0f172a;
+      --text-secondary: #475569;
+    }
+    
+    html.light body { background: #f8fafc; }
+    html.light .dark-bg { background: #ffffff !important; }
+    html.light .dark-card { background: #f1f5f9 !important; }
+    html.light .dark-text { color: #0f172a !important; }
+    html.light .dark-text-secondary { color: #475569 !important; }
+    html.light .nav-blur { background: rgba(248, 250, 252, 0.8); }
+    html.light ::-webkit-scrollbar-track { background: #e2e8f0; }
+  </style>
+  <style>body { box-sizing: border-box; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+
+ <body class="h-full bg-dark-900 text-white overflow-auto dark-bg">
+
+  <!-- Loading Screen -->
+  <div class="loading-screen" id="loadingScreen">
+   <div class="loader"></div>
+  </div>
+
+  <!-- Particles Background -->
+  <div class="particles fixed inset-0 pointer-events-none" id="particles"></div>
+  
+  <!-- Navigation -->
+  <nav class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" id="navbar">
+   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16 md:h-20">
+      <a href="#home" class="text-xl md:text-2xl font-bold gradient-text" id="navLogo">Portfolio</a>
+      
+      <!-- Desktop Menu -->
+     <div class="hidden md:flex items-center space-x-8">
+      <a href="#home" class="nav-link text-gray-300 hover:text-white transition-colors dark-text-secondary">Home</a>
+      <a href="#about" class="nav-link text-gray-300 hover:text-white transition-colors dark-text-secondary">About</a>
+      <a href="#skills" class="nav-link text-gray-300 hover:text-white transition-colors dark-text-secondary">Skills</a>
+      <a href="#experience" class="nav-link text-gray-300 hover:text-white transition-colors dark-text-secondary">Experience</a>
+      <a href="#certificates" class="nav-link text-gray-300 hover:text-white transition-colors dark-text-secondary">Certificates</a>
+      <a href="#gallery" class="nav-link text-gray-300 hover:text-white transition-colors dark-text-secondary">Gallery</a>
+      <a href="#contact" class="nav-link text-gray-300 hover:text-white transition-colors dark-text-secondary">Contact</a>
+      
+      <!-- Theme Toggle -->
+      <button id="themeToggle" class="p-2 rounded-full bg-dark-700 hover:bg-dark-600 transition-colors dark-card">
+       <svg id="moonIcon" class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>
+       </svg>
+       <svg id="sunIcon" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+       </svg>
+      </button>
+     </div>
+     
+     <!-- Mobile Menu Button -->
+      <button id="mobileMenuBtn" class="md:hidden p-2">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
+    </div>
+   </div
+   
+   ><!-- Mobile Menu -->
+   <div id="mobileMenu" class="md:hidden hidden bg-dark-800 dark-card">
+    <div class="px-4 py-4 space-y-3">
+      <a href="#home" class="block py-2 text-gray-300 hover:text-white dark-text-secondary">Home</a>
+      <a href="#about" class="block py-2 text-gray-300 hover:text-white dark-text-secondary">About</a>
+      <a href="#skills" class="block py-2 text-gray-300 hover:text-white dark-text-secondary">Skills</a>
+      <a href="#experience" class="block py-2 text-gray-300 hover:text-white dark-text-secondary">Experience</a>
+      <a href="#certificates" class="block py-2 text-gray-300 hover:text-white dark-text-secondary">Certificates</a>
+      <a href="#gallery" class="block py-2 text-gray-300 hover:text-white dark-text-secondary">Gallery</a>
+      <a href="#contact" class="block py-2 text-gray-300 hover:text-white dark-text-secondary">Contact</a>
+      <button id="mobileThemeToggle" class="flex items-center space-x-2 py-2 text-gray-300">
+        <span>Toggle Theme</span>
+      </button>
+    </div>
+   </div>
+  </nav>
+  
+  <!-- Main Content -->
+  <main class="w-full">
+    
+    <!-- Hero Section -->
+   <section id="home" class="min-h-screen flex items-center justify-center relative px-4 pt-20">
+    <div class="text-center z-10 fade-in">
+      
+      <!-- Profile Image -->
+     <div class="profile-ring w-40 h-40 md:w-52 md:h-52 mx-auto mb-8 animate-float">
+      <div class="w-full h-full rounded-full bg-dark-700 flex items-center justify-center overflow-hidden dark-card">
+       <img src="img/PP.jpeg" alt="PP">
+      </div>
+     </div>
+     
+     <!-- Name & Title -->
+     <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-4 dark-text" id="heroName">
+      <span class="gradient-text">Fardha Ziqri Putra Purwandi</span></h1>
+     <h2 class="text-xl md:text-2xl lg:text-3xl text-gray-400 mb-6 dark-text-secondary" id="heroTitle">IT Support &amp; Graphic Designer</h2>
+     <p class="text-lg md:text-xl text-gray-500 mb-10 max-w-2xl mx-auto dark-text-secondary" id="heroTagline">Crafting digital experiences with passion and precision</p>
+     
+     <!-- CTA Buttons -->
+     <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <button class="btn-glow px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full font-semibold text-lg transition-all hover:scale-105">
+        <span class="flex items-center justify-center gap-2">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+        </svg> Download CV</span>
+      </button>
+      
+      <button class="px-8 py-4 border-2 border-purple-500 rounded-full font-semibold text-lg transition-all hover:bg-purple-500/20 hover:scale-105"> 
+        <span class="flex items-center justify-center gap-2">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+        </svg> Hire Me </span> 
+      </button>
+     </div>
+     
+     <!-- Scroll Indicator -->
+     <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 scroll-indicator">
+      <div class="w-6 h-10 border-2 border-gray-500 rounded-full flex justify-center pt-2">
+       <div class="w-1 h-3 bg-gradient-to-b from-blue-500 to-purple-500 rounded-full animate-pulse"></div>
+      </div>
+     </div>
+    </div>
+   </section>
+   
+   <!-- About Section -->
+   <section id="about" class="py-20 px-4">
+    <div class="max-w-6xl mx-auto">
+     <h2 class="text-3xl md:text-5xl font-bold text-center mb-16 fade-in dark-text">About <span class="gradient-text">Me</span>
+      </h2>
+     <div class="grid md:grid-cols-2 gap-12 items-center">
+      
+      <!-- About Text -->
+      <div class="fade-in-left">
+       <h3 class="text-2xl font-semibold mb-4 dark-text">Who Am I?</h3>
+       <p class="text-gray-400 leading-relaxed mb-6 dark-text-secondary" id="aboutDesc">I'm a passionate IT professional and creative designer with over 3 years of experience in delivering high-quality digital solutions. I specialize in IT Support, Web Development, and Graphic Design, combining technical expertise with creative vision to bring ideas to life.</p>
+       <p class="text-gray-400 leading-relaxed mb-8 dark-text-secondary">My journey in tech started with a curiosity for how things work, which evolved into a career building and supporting digital infrastructure while creating stunning visual designs.</p><!-- Highlights -->
+       <div class="grid grid-cols-2 gap-4">
+        <div class="flex items-center gap-3">
+         <div class="w-10 h-10 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 flex items-center justify-center">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+          </svg>
+         </div><span class="text-gray-300 dark-text-secondary">Problem Solver</span>
+        </div>
+        <div class="flex items-center gap-3">
+         <div class="w-10 h-10 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 flex items-center justify-center">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+          </svg>
+         </div><span class="text-gray-300 dark-text-secondary">Creative Thinker</span>
+        </div>
+        <div class="flex items-center gap-3">
+         <div class="w-10 h-10 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 flex items-center justify-center">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+          </svg>
+         </div><span class="text-gray-300 dark-text-secondary">Detail Oriented</span>
+        </div>
+        <div class="flex items-center gap-3">
+         <div class="w-10 h-10 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 flex items-center justify-center">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+          </svg>
+         </div><span class="text-gray-300 dark-text-secondary">Team Player</span>
+        </div>
+       </div>
+      </div>
+      
+      <!-- Stats -->
+      <div class="fade-in-right">
+       <div class="grid grid-cols-2 gap-6">
+        <div class="card-hover bg-dark-800 rounded-2xl p-6 text-center dark-card">
+         <div class="text-4xl md:text-5xl font-bold gradient-text mb-2"><span class="counter" data-target="3">0</span>+
+         </div>
+         <p class="text-gray-400 dark-text-secondary">Years Experience</p>
+        </div>
+        <div class="card-hover bg-dark-800 rounded-2xl p-6 text-center dark-card">
+         <div class="text-4xl md:text-5xl font-bold gradient-text mb-2"><span class="counter" data-target="50">0</span>+
+         </div>
+         <p class="text-gray-400 dark-text-secondary">Projects Done</p>
+        </div>
+        <div class="card-hover bg-dark-800 rounded-2xl p-6 text-center dark-card">
+         <div class="text-4xl md:text-5xl font-bold gradient-text mb-2"><span class="counter" data-target="20">0</span>+
+         </div>
+         <p class="text-gray-400 dark-text-secondary">Happy Clients</p>
+        </div>
+        <div class="card-hover bg-dark-800 rounded-2xl p-6 text-center dark-card">
+         <div class="text-4xl md:text-5xl font-bold gradient-text mb-2"><span class="counter" data-target="15">0</span>+
+         </div>
+         <p class="text-gray-400 dark-text-secondary">Certificates</p>
+        </div>
+       </div>
+      </div>
+     </div>
+     
+     <!-- Timeline -->
+     <div class="mt-20">
+      <h3 class="text-2xl font-semibold text-center mb-12 dark-text fade-in">My Journey</h3>
+      <div class="flex flex-col md:flex-row justify-center gap-8">
+       <div class="card-hover bg-dark-800 rounded-2xl p-6 flex-1 max-w-xs fade-in dark-card" style="transition-delay: 0.1s">
+        <div class="w-12 h-12 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 flex items-center justify-center mb-4"><span class="font-bold">1</span>
+        </div>
+        <h4 class="font-semibold text-lg mb-2 dark-text">2021</h4>
+        <p class="text-gray-400 text-sm dark-text-secondary">Started learning IT fundamentals and graphic design basics</p>
+       </div>
+
+       <div class="card-hover bg-dark-800 rounded-2xl p-6 flex-1 max-w-xs fade-in dark-card" style="transition-delay: 0.2s">
+        <div class="w-12 h-12 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 flex items-center justify-center mb-4"><span class="font-bold">2</span>
+        </div>
+        <h4 class="font-semibold text-lg mb-2 dark-text">2022</h4>
+        <p class="text-gray-400 text-sm dark-text-secondary">First professional role as IT Support &amp; started freelancing</p>
+       </div>
+
+       <div class="card-hover bg-dark-800 rounded-2xl p-6 flex-1 max-w-xs fade-in dark-card" style="transition-delay: 0.3s">
+        <div class="w-12 h-12 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 flex items-center justify-center mb-4"><span class="font-bold">3</span>
+        </div>
+        <h4 class="font-semibold text-lg mb-2 dark-text">2024</h4>
+        <p class="text-gray-400 text-sm dark-text-secondary">Expanded to web development &amp; established design portfolio</p>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section>
+   
+   <!-- Skills Section -->
+   <section id="skills" class="py-20 px-4 bg-dark-800 dark-card">
+    <div class="max-w-6xl mx-auto">
+     <h2 class="text-3xl md:text-5xl font-bold text-center mb-16 fade-in dark-text">My <span class="gradient-text">Skills</span></h2>
+     <div class="grid md:grid-cols-2 gap-12">
+      
+      <!-- Technical Skills -->
+      <div class="fade-in-left">
+       <h3 class="text-xl font-semibold mb-8 flex items-center gap-3 dark-text">
+        <div class="w-10 h-10 rounded-lg bg-gradient-to-r from-blue-500 to-purple-500 flex items-center justify-center">
+         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+         </svg>
+        </div> Technical Skills</h3>
+
+       <div class="flex flex-wrap gap-3">
+        <div class="px-4 py-2 bg-dark-700 rounded-full text-gray-300 dark-text-secondary font-medium flex items-center gap-2 dark-bg"><span class="text-blue-400">◆</span> HTML / CSS / JavaScript
+        </div>
+        <div class="px-4 py-2 bg-dark-700 rounded-full text-gray-300 dark-text-secondary font-medium flex items-center gap-2 dark-bg"><span class="text-purple-400">◆</span> Networking / Mikrotik
+        </div>
+        <div class="px-4 py-2 bg-dark-700 rounded-full text-gray-300 dark-text-secondary font-medium flex items-center gap-2 dark-bg"><span class="text-pink-400">◆</span> Linux / Windows Server
+        </div>
+        <div class="px-4 py-2 bg-dark-700 rounded-full text-gray-300 dark-text-secondary font-medium flex items-center gap-2 dark-bg"><span class="text-cyan-400">◆</span> Hardware Troubleshooting
+        </div>
+        <div class="px-4 py-2 bg-dark-700 rounded-full text-gray-300 dark-text-secondary font-medium flex items-center gap-2 dark-bg"><span class="text-green-400">◆</span> Database / SQL
+        </div>
+       </div>
+      </div>
+      
+      <!-- Design Skills -->
+      <div class="fade-in-right">
+       <h3 class="text-xl font-semibold mb-8 flex items-center gap-3 dark-text">
+        <div class="w-10 h-10 rounded-lg bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center">
+         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+         </svg>
+        </div> Design Skills</h3>
+
+       <div class="flex flex-wrap gap-3">
+        <div class="px-4 py-2 bg-dark-700 rounded-full text-gray-300 dark-text-secondary font-medium flex items-center gap-2 dark-bg"><span class="text-orange-400">◆</span> Adobe Illustrator
+        </div>
+        <div class="px-4 py-2 bg-dark-700 rounded-full text-gray-300 dark-text-secondary font-medium flex items-center gap-2 dark-bg"><span class="text-blue-400">◆</span> Photoshop
+        </div>
+        <div class="px-4 py-2 bg-dark-700 rounded-full text-gray-300 dark-text-secondary font-medium flex items-center gap-2 dark-bg"><span class="text-purple-400">◆</span> Figma
+        </div>
+        <div class="px-4 py-2 bg-dark-700 rounded-full text-gray-300 dark-text-secondary font-medium flex items-center gap-2 dark-bg"><span class="text-red-400">◆</span> CorelDraw
+        </div>
+        <div class="px-4 py-2 bg-dark-700 rounded-full text-gray-300 dark-text-secondary font-medium flex items-center gap-2 dark-bg"><span class="text-pink-400">◆</span> After Effects
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section>
+   
+   <!-- Experience Section -->
+   <section id="experience" class="py-20 px-4">
+    <div class="max-w-4xl mx-auto">
+     <h2 class="text-3xl md:text-5xl font-bold text-center mb-16 fade-in dark-text">Work <span class="gradient-text">Experience</span></h2>
+     <div class="relative">
+      
+      <!-- Timeline Line -->
+      <div class="absolute left-8 md:left-1/2 md:transform md:-translate-x-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-500 via-purple-500 to-pink-500"></div><!-- Experience Items -->
+      <div class="space-y-12">
+        
+        <!-- Item 1 -->
+       <div class="relative flex items-start md:justify-between fade-in">
+        <div class="hidden md:block w-5/12"></div>
+        <div class="absolute left-8 md:left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 glow-blue"></div>
+        <div class="ml-16 md:ml-0 md:w-5/12 card-hover bg-dark-800 rounded-2xl p-6 dark-card"><span class="text-purple-400 text-sm font-medium">2023 - Present</span>
+         <h3 class="text-xl font-semibold mt-2 mb-1 dark-text">IT Support Specialist</h3>
+         <p class="text-gray-500 text-sm mb-3 dark-text-secondary">Tech Company Inc.</p>
+         <p class="text-gray-400 text-sm leading-relaxed dark-text-secondary">Managing IT infrastructure, troubleshooting hardware/software issues, network administration, and providing technical support to 100+ employees.</p>
+        </div>
+       </div>
+       
+        <!-- Item 2 -->
+       <div class="relative flex items-start md:justify-between fade-in">
+        <div class="md:w-5/12 card-hover bg-dark-800 rounded-2xl p-6 ml-16 md:ml-0 dark-card"><span class="text-purple-400 text-sm font-medium">2022 - 2023</span>
+         <h3 class="text-xl font-semibold mt-2 mb-1 dark-text">Freelance Designer</h3>
+         <p class="text-gray-500 text-sm mb-3 dark-text-secondary">Self-employed</p>
+         <p class="text-gray-400 text-sm leading-relaxed dark-text-secondary">Creating brand identities, illustrations, and digital artwork for various clients. Specialized in logo design and social media graphics.</p>
+        </div>
+        <div class="absolute left-8 md:left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 glow-purple"></div>
+        <div class="hidden md:block w-5/12"></div>
+       </div>
+       
+       <!-- Item 3 -->
+       <div class="relative flex items-start md:justify-between fade-in">
+        <div class="hidden md:block w-5/12"></div>
+        <div class="absolute left-8 md:left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 glow-blue"></div>
+        <div class="ml-16 md:ml-0 md:w-5/12 card-hover bg-dark-800 rounded-2xl p-6 dark-card"><span class="text-purple-400 text-sm font-medium">2021 - 2022</span>
+         <h3 class="text-xl font-semibold mt-2 mb-1 dark-text">Junior Web Developer</h3>
+         <p class="text-gray-500 text-sm mb-3 dark-text-secondary">Digital Agency</p>
+         <p class="text-gray-400 text-sm leading-relaxed dark-text-secondary">Developed responsive websites, collaborated with design team, and learned modern web technologies including React and Node.js.</p>
+        </div>
+       </div>
+       
+       <!-- Item 4 -->
+       <div class="relative flex items-start md:justify-between fade-in">
+        <div class="md:w-5/12 card-hover bg-dark-800 rounded-2xl p-6 ml-16 md:ml-0 dark-card"><span class="text-purple-400 text-sm font-medium">2020 - 2021</span>
+         <h3 class="text-xl font-semibold mt-2 mb-1 dark-text">IT Intern</h3>
+         <p class="text-gray-500 text-sm mb-3 dark-text-secondary">Startup Hub</p>
+         <p class="text-gray-400 text-sm leading-relaxed dark-text-secondary">Gained hands-on experience in IT support, network setup, and system administration while completing professional training.</p>
+        </div>
+        <div class="absolute left-8 md:left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 glow-purple"></div>
+        <div class="hidden md:block w-5/12"></div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section>
+   
+   <!-- Certificates Section -->
+   <section id="certificates" class="py-20 px-4 bg-dark-800 dark-card">
+    <div class="max-w-6xl mx-auto">
+     <div class="text-center mb-16 fade-in">
+      <h2 class="text-3xl md:text-5xl font-bold mb-4"><span class="gradient-text">Certificates</span></h2>
+      <div class="w-24 h-1 mx-auto bg-gradient-to-r from-cyan-500 to-purple-500 rounded-full"></div>
+      <p class="text-gray-700 mt-4">Professional certifications and achievements</p>
+     </div>
+     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="fade-in bg-white rounded-2xl overflow-hidden border border-blue-200 card-hover cursor-pointer group" onclick="openCertModal('MTCNA Certification', 'Mikrotik Network Associate certification demonstrating proficiency in Mikrotik RouterOS and networking fundamentals.')">
+       <div class="relative h-48 bg-gradient-to-br from-cyan-500 to-blue-500 flex items-center justify-center overflow-hidden"><img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=300&amp;h=200&amp;fit=crop" alt="MTCNA" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" loading="lazy" onerror="this.style.display='none'">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+       </div>
+       <div class="p-6"><span class="px-3 py-1 bg-cyan-500/20 text-cyan-700 rounded-full text-xs font-medium">Networking</span>
+        <h3 class="text-lg font-semibold mt-3 mb-2 text-gray-900">MTCNA Certification</h3>
+        <p class="text-gray-600 text-sm">Mikrotik • 2023</p>
+       </div>
+      </div>
+      <div class="fade-in bg-white rounded-2xl overflow-hidden border border-blue-200 card-hover cursor-pointer group" onclick="openCertModal('Google IT Support', 'Professional certificate from Google demonstrating foundational IT support skills.')">
+       <div class="relative h-48 bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center overflow-hidden"><img src="https://images.unsplash.com/photo-1516321904601-4d9e55a1302a?w=300&amp;h=200&amp;fit=crop" alt="Google" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" loading="lazy" onerror="this.style.display='none'">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+       </div>
+       <div class="p-6"><span class="px-3 py-1 bg-purple-500/20 text-purple-700 rounded-full text-xs font-medium">IT Support</span>
+        <h3 class="text-lg font-semibold mt-3 mb-2 text-gray-900">Google IT Support</h3>
+        <p class="text-gray-600 text-sm">Google / Coursera • 2022</p>
+       </div>
+      </div>
+      <div class="fade-in bg-white rounded-2xl overflow-hidden border border-blue-200 card-hover cursor-pointer group" onclick="openCertModal('Graphic Design Essentials', 'Comprehensive course covering design fundamentals, color theory, and typography.')">
+       <div class="relative h-48 bg-gradient-to-br from-pink-500 to-rose-500 flex items-center justify-center overflow-hidden"><img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=300&amp;h=200&amp;fit=crop" alt="Design" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" loading="lazy" onerror="this.style.display='none'">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+       </div>
+       <div class="p-6"><span class="px-3 py-1 bg-pink-500/20 text-pink-700 rounded-full text-xs font-medium">Design</span>
+        <h3 class="text-lg font-semibold mt-3 mb-2 text-gray-900">Graphic Design Essentials</h3>
+        <p class="text-gray-600 text-sm">Udemy • 2022</p>
+       </div>
+      </div>
+      <div class="fade-in bg-white rounded-2xl overflow-hidden border border-blue-200 card-hover cursor-pointer group" onclick="openCertModal('Responsive Web Design', 'FreeCodeCamp certification covering HTML5, CSS3, Flexbox, Grid.')">
+       <div class="relative h-48 bg-gradient-to-br from-cyan-400 to-blue-600 flex items-center justify-center overflow-hidden"><img src="https://images.unsplash.com/photo-1633356713697-e36b205eaa0c?w=300&amp;h=200&amp;fit=crop" alt="Web" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" loading="lazy" onerror="this.style.display='none'">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+       </div>
+       <div class="p-6"><span class="px-3 py-1 bg-cyan-500/20 text-cyan-700 rounded-full text-xs font-medium">Web Dev</span>
+        <h3 class="text-lg font-semibold mt-3 mb-2 text-gray-900">Responsive Web Design</h3>
+        <p class="text-gray-600 text-sm">FreeCodeCamp • 2022</p>
+       </div>
+      </div>
+      <div class="fade-in bg-white rounded-2xl overflow-hidden border border-blue-200 card-hover cursor-pointer group" onclick="openCertModal('Linux Fundamentals', 'Course covering Linux command line, file system, and system administration.')">
+       <div class="relative h-48 bg-gradient-to-br from-yellow-500 to-amber-600 flex items-center justify-center overflow-hidden"><img src="https://images.unsplash.com/photo-1633356713697-e36b205eaa0c?w=300&amp;h=200&amp;fit=crop" alt="Linux" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" loading="lazy" onerror="this.style.display='none'">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+       </div>
+       <div class="p-6"><span class="px-3 py-1 bg-yellow-500/20 text-yellow-700 rounded-full text-xs font-medium">Linux</span>
+        <h3 class="text-lg font-semibold mt-3 mb-2 text-gray-900">Linux Fundamentals</h3>
+        <p class="text-gray-600 text-sm">Linux Foundation • 2021</p>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section>
+   
+   <!-- Gallery Section -->
+   <section id="gallery" class="py-8 px-4 border-t border-dark-700">
+    <div class="max-w-7xl mx-auto">
+     <div class="text-center mb-12 fade-in">
+      <h2 class="text-3xl md:text-5xl font-bold mb-4"><span class="gradient-text">Gallery</span></h2>
+      <div class="w-24 h-1 mx-auto bg-gradient-to-r from-cyan-500 to-purple-500 rounded-full"></div>
+      <p class="text-gray-700 mt-4">Showcase of my creative work</p>
+     </div>
+     <div id="gallery-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="fade-in gallery-item cursor-pointer">
+       <div class="relative rounded-2xl overflow-hidden bg-gradient-to-br from-cyan-400 to-blue-500 h-64 group" onclick="openGalleryModal('Portfolio Website', 'Modern portfolio website with smooth animations', 'image', 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=600&amp;h=400&amp;fit=crop')"><img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=600&amp;h=400&amp;fit=crop" alt="Portfolio" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" onerror="this.style.display='none'">
+        <div class="gallery-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 transition-opacity duration-300 flex flex-col justify-end p-6 text-white">
+         <h3 class="text-lg font-semibold">Portfolio Website</h3>
+         <p class="text-gray-200 text-sm mt-1">Modern dark theme</p>
+        </div>
+       </div>
+      </div>
+      <div class="fade-in gallery-item cursor-pointer">
+       <div class="relative rounded-2xl overflow-hidden bg-gradient-to-br from-purple-400 to-pink-500 h-64 group" onclick="openGalleryModal('Character Design', 'Digital illustration of character', 'image', 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600&amp;h=400&amp;fit=crop')"><img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600&amp;h=400&amp;fit=crop" alt="Design" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" onerror="this.style.display='none'">
+        <div class="gallery-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 transition-opacity duration-300 flex flex-col justify-end p-6 text-white">
+         <h3 class="text-lg font-semibold">Character Design</h3>
+         <p class="text-gray-200 text-sm mt-1">Digital artwork</p>
+        </div>
+       </div>
+      </div>
+      <div class="fade-in gallery-item cursor-pointer">
+       <div class="relative rounded-2xl overflow-hidden bg-gradient-to-br from-pink-400 to-yellow-500 h-64 group" onclick="openGalleryModal('Event Poster', 'Music festival promotional poster', 'image', 'https://images.unsplash.com/photo-1533900298318-6b8da08a523e?w=600&amp;h=400&amp;fit=crop')"><img src="https://images.unsplash.com/photo-1533900298318-6b8da08a523e?w=600&amp;h=400&amp;fit=crop" alt="Poster" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" onerror="this.style.display='none'">
+        <div class="gallery-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 transition-opacity duration-300 flex flex-col justify-end p-6 text-white">
+         <h3 class="text-lg font-semibold">Event Poster</h3>
+         <p class="text-gray-200 text-sm mt-1">Festival promotional</p>
+        </div>
+       </div>
+      </div>
+      <div class="fade-in gallery-item cursor-pointer">
+       <div class="relative rounded-2xl overflow-hidden bg-gradient-to-br from-green-400 to-cyan-500 h-64 group" onclick="openGalleryModal('Mobile App UI', 'E-commerce app interface', 'image', 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=600&amp;h=400&amp;fit=crop')"><img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=600&amp;h=400&amp;fit=crop" alt="Mobile UI" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" onerror="this.style.display='none'">
+        <div class="gallery-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 transition-opacity duration-300 flex flex-col justify-end p-6 text-white">
+         <h3 class="text-lg font-semibold">Mobile App UI</h3>
+         <p class="text-gray-200 text-sm mt-1">E-commerce design</p>
+        </div>
+       </div>
+      </div>
+      <div class="fade-in gallery-item cursor-pointer">
+       <div class="relative rounded-2xl overflow-hidden bg-gradient-to-br from-cyan-400 to-green-500 h-64 group" onclick="openGalleryModal('Landing Page', 'SaaS product website', 'image', 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600&amp;h=400&amp;fit=crop')"><img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600&amp;h=400&amp;fit=crop" alt="Landing" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" onerror="this.style.display='none'">
+        <div class="gallery-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 transition-opacity duration-300 flex flex-col justify-end p-6 text-white">
+         <h3 class="text-lg font-semibold">Landing Page</h3>
+         <p class="text-gray-200 text-sm mt-1">SaaS website</p>
+        </div>
+       </div>
+      </div>
+      <div class="fade-in gallery-item cursor-pointer">
+       <div class="relative rounded-2xl overflow-hidden bg-gradient-to-br from-yellow-400 to-purple-500 h-64 group" onclick="openGalleryModal('Motion Graphics', 'Animated logo reveal video', 'video', 'https://www.youtube.com/embed/dQw4w9WgXcQ')"><img src="https://images.unsplash.com/photo-1533900298318-6b8da08a523e?w=600&amp;h=400&amp;fit=crop" alt="Video" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" onerror="this.style.display='none'">
+        <div class="absolute top-4 left-4"><span class="px-2 py-1 bg-black/60 rounded-full text-xs flex items-center gap-1 text-white">
+          <svg class="w-3 h-3 text-red-500" fill="currentColor" viewbox="0 0 24 24">
+           <circle cx="12" cy="12" r="10" />
+          </svg> Video </span>
+        </div>
+        <div class="gallery-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 transition-opacity duration-300 flex flex-col justify-end p-6 text-white">
+         <h3 class="text-lg font-semibold">Logo Animation</h3>
+         <p class="text-gray-200 text-sm mt-1">Motion graphics</p>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section>
+
+   <!-- Contact Section -->
+   <section id="contact" class="py-20 px-4 bg-dark-800 dark-card">
+    <div class="max-w-4xl mx-auto">
+     <h2 class="text-3xl md:text-5xl font-bold text-center mb-16 fade-in dark-text">Get In <span class="gradient-text">Touch</span></h2>
+     <div class="grid md:grid-cols-2 gap-12">
+      
+      <!-- Contact Info -->
+      <div class="fade-in-left">
+       <h3 class="text-xl font-semibold mb-6 dark-text">Let's work together</h3>
+       <p class="text-gray-400 mb-8 dark-text-secondary">Have a project in mind or need IT support? Feel free to reach out. I'm always open to discussing new projects and opportunities.</p>
+       <div class="space-y-4">
+        <div class="flex items-center gap-4">
+         <div class="w-12 h-12 rounded-xl bg-gradient-to-r from-blue-500 to-purple-500 flex items-center justify-center">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+          </svg>
+         </div>
+         <div>
+          <p class="text-gray-500 text-sm dark-text-secondary">Email</p>
+          <p class="text-gray-300 dark-text" id="contactEmailDisplay">hello@example.com</p>
+         </div>
+        </div>
+        <div class="flex items-center gap-4">
+         <div class="w-12 h-12 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+          </svg>
+         </div>
+         <div>
+          <p class="text-gray-500 text-sm dark-text-secondary">Location</p>
+          <p class="text-gray-300 dark-text">Indonesia</p>
+         </div>
+        </div>
+       </div>
+       
+       <!-- Social Links -->
+       <div class="mt-8">
+        <p class="text-gray-500 text-sm mb-4 dark-text-secondary">Follow me on</p>
+        <div class="flex gap-4"><a href="#" class="w-12 h-12 rounded-xl bg-dark-700 flex items-center justify-center hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-500 transition-all dark-bg">
+          <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+          </svg></a> <a href="#" class="w-12 h-12 rounded-xl bg-dark-700 flex items-center justify-center hover:bg-gradient-to-r hover:from-purple-500 hover:to-pink-500 transition-all dark-bg">
+          <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+          </svg></a> <a href="#" class="w-12 h-12 rounded-xl bg-dark-700 flex items-center justify-center hover:bg-gradient-to-r hover:from-gray-700 hover:to-gray-600 transition-all dark-bg">
+          <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+          </svg></a>
+        </div>
+       </div>
+      </div>
+      
+      <!-- Contact Form -->
+      <div class="fade-in-right">
+       <form id="contactForm" class="space-y-6">
+        <div><label for="name" class="block text-gray-400 text-sm mb-2 dark-text-secondary">Your Name</label> <input type="text" id="name" name="name" required class="w-full px-4 py-3 bg-dark-700 border border-dark-600 rounded-xl focus:outline-none focus:border-purple-500 transition-colors dark-bg dark-text" placeholder="John Doe">
+        </div>
+        <div><label for="email" class="block text-gray-400 text-sm mb-2 dark-text-secondary">Your Email</label> <input type="email" id="email" name="email" required class="w-full px-4 py-3 bg-dark-700 border border-dark-600 rounded-xl focus:outline-none focus:border-purple-500 transition-colors dark-bg dark-text" placeholder="john@example.com">
+        </div>
+        <div><label for="message" class="block text-gray-400 text-sm mb-2 dark-text-secondary">Message</label> <textarea id="message" name="message" rows="5" required class="w-full px-4 py-3 bg-dark-700 border border-dark-600 rounded-xl focus:outline-none focus:border-purple-500 transition-colors resize-none dark-bg dark-text" placeholder="Tell me about your project..."></textarea>
+        </div><button type="submit" class="w-full py-4 bg-gradient-to-r from-blue-500 to-purple-500 rounded-xl font-semibold text-lg transition-all hover:scale-[1.02] btn-glow flex items-center justify-center gap-2">
+         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+         </svg> Send Message </button>
+       </form>
+       
+       <!-- Success Message -->
+       <div id="successMessage" class="hidden mt-6 p-4 bg-green-500/20 border border-green-500/50 rounded-xl text-green-400 text-center">
+        ✓ Message sent successfully! I'll get back to you soon.
+       </div>
+      </div>
+     </div>
+    </div>
+   </section>
+   
+   <!-- Footer -->
+   <footer class="py-8 px-4 border-t border-dark-700">
+    <div class="max-w-6xl mx-auto text-center">
+     <p class="text-gray-500 dark-text-secondary">© 2024 <span class="gradient-text font-semibold" id="footerName">Portfolio</span>. All rights reserved.</p>
+    </div>
+   </footer>
+  </main><div id="cert-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4">
+   <div class="absolute inset-0 bg-gray-900/50 modal-backdrop" onclick="closeCertModal()"></div>
+   <div class="relative bg-white rounded-2xl max-w-lg w-full max-h-[90%] overflow-auto border border-blue-200 transform scale-95 opacity-0 transition-all duration-300" id="cert-modal-content"><button onclick="closeCertModal()" class="absolute top-4 right-4 w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center hover:bg-blue-200 transition-colors z-10">
+     <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+     </svg></button>
+    <div class="p-6">
+     <h3 id="cert-modal-title" class="text-2xl font-bold mb-3 gradient-text">Certificate Title</h3>
+     <p id="cert-modal-desc" class="text-gray-700 leading-relaxed">Certificate description goes here.</p>
+    </div>
+   </div>
+  </div>
+  
+  <!-- Gallery Modal -->
+  <div id="gallery-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4">
+   <div class="absolute inset-0 bg-gray-900/50 modal-backdrop" onclick="closeGalleryModal()"></div>
+   <div class="relative bg-white rounded-2xl max-w-4xl w-full max-h-[90%] overflow-auto border border-blue-200 transform scale-95 opacity-0 transition-all duration-300" id="gallery-modal-content"><button onclick="closeGalleryModal()" class="absolute top-4 right-4 w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center hover:bg-blue-200 transition-colors z-10">
+     <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+     </svg></button>
+    <div id="gallery-modal-media" class="aspect-video bg-gradient-to-br from-cyan-400 to-purple-400 flex items-center justify-center">
+     <svg class="w-20 h-20 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+     </svg>
+    </div>
+    <div class="p-6">
+     <h3 id="gallery-modal-title" class="text-2xl font-bold mb-3 text-gray-900">Project Title</h3>
+     <p id="gallery-modal-desc" class="text-gray-700 leading-relaxed">Project description goes here.</p>
+    </div>
+   </div>
+  </div>
+  
+  <!-- Back to Top Button --> <button id="backToTop" class="fixed bottom-8 right-8 w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center opacity-0 invisible transition-all hover:scale-110 z-50">
+   <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+   </svg></button>
+   
+   <!-- Certificate Modal -->
+  <div id="certModal" class="modal fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4">
+   <div class="bg-dark-800 rounded-2xl max-w-lg w-full p-8 relative dark-card"><button id="closeCertModal" class="absolute top-4 right-4 w-10 h-10 rounded-full bg-dark-700 flex items-center justify-center hover:bg-dark-600 transition-colors dark-bg">
+     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+     </svg></button>
+    <div class="text-center">
+     <div class="w-24 h-24 mx-auto mb-6 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 flex items-center justify-center">
+      <svg class="w-12 h-12" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+      </svg>
+     </div>
+     <h3 id="certModalTitle" class="text-2xl font-bold mb-2 dark-text">Certificate Name</h3>
+     <p id="certModalIssuer" class="text-gray-400 mb-4 dark-text-secondary">Issuer</p>
+     <p id="certModalDesc" class="text-gray-500 text-sm dark-text-secondary">This certificate validates expertise in the respective field.</p>
+    </div>
+   </div>
+  </div>
+  
+  <!-- Gallery Modal -->
+  <div id="galleryModal" class="modal fixed inset-0 bg-black/90 flex items-center justify-center z-50 p-4"><button id="closeGalleryModal" class="absolute top-4 right-4 w-10 h-10 rounded-full bg-dark-700 flex items-center justify-center hover:bg-dark-600 transition-colors">
+    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+    </svg></button>
+   <div class="max-w-4xl w-full">
+    <div id="galleryModalContent" class="aspect-video bg-gradient-to-br from-blue-600 to-purple-600 rounded-2xl flex items-center justify-center">
+     <svg class="w-32 h-32 text-white/30" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+     </svg>
+    </div>
+    <div class="mt-4 text-center">
+     <h3 id="galleryModalTitle" class="text-xl font-semibold">Project Title</h3>
+     <p id="galleryModalCategory" class="text-gray-400">Category</p>
+    </div>
+   </div>
+  </div>
+  <script>
+    // Default configuration
+    const defaultConfig = {
+      profile_name: 'Fardha Ziqri Putra Purwandi',
+      profile_title: 'IT Support & Graphic Designer',
+      profile_tagline: 'Crafting digital experiences with passion and precision',
+      about_description: "I'm a passionate IT professional and creative designer with over 3 years of experience in delivering high-quality digital solutions. I specialize in IT Support, Web Development, and Graphic Design, combining technical expertise with creative vision to bring ideas to life.",
+      contact_email: 'fardha.works@gmail.com',
+      background_color: '#0a0a0f',
+      surface_color: '#12121a',
+      text_color: '#ffffff',
+      primary_action_color: '#3b82f6',
+      secondary_action_color: '#8b5cf6'
+    };
+
+    let config = { ...defaultConfig };
+
+    // Initialize Element SDK
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange: async (newConfig) => {
+          config = { ...defaultConfig, ...newConfig };
+          updateUI();
+        },
+        mapToCapabilities: (cfg) => ({
+          recolorables: [
+            {
+              get: () => cfg.background_color || defaultConfig.background_color,
+              set: (value) => { cfg.background_color = value; window.elementSdk.setConfig({ background_color: value }); }
+            },
+            {
+              get: () => cfg.surface_color || defaultConfig.surface_color,
+              set: (value) => { cfg.surface_color = value; window.elementSdk.setConfig({ surface_color: value }); }
+            },
+            {
+              get: () => cfg.text_color || defaultConfig.text_color,
+              set: (value) => { cfg.text_color = value; window.elementSdk.setConfig({ text_color: value }); }
+            },
+            {
+              get: () => cfg.primary_action_color || defaultConfig.primary_action_color,
+              set: (value) => { cfg.primary_action_color = value; window.elementSdk.setConfig({ primary_action_color: value }); }
+            },
+            {
+              get: () => cfg.secondary_action_color || defaultConfig.secondary_action_color,
+              set: (value) => { cfg.secondary_action_color = value; window.elementSdk.setConfig({ secondary_action_color: value }); }
+            }
+          ],
+          borderables: [],
+          fontEditable: undefined,
+          fontSizeable: undefined
+        }),
+        mapToEditPanelValues: (cfg) => new Map([
+          ['profile_name', cfg.profile_name || defaultConfig.profile_name],
+          ['profile_title', cfg.profile_title || defaultConfig.profile_title],
+          ['profile_tagline', cfg.profile_tagline || defaultConfig.profile_tagline],
+          ['about_description', cfg.about_description || defaultConfig.about_description],
+          ['contact_email', cfg.contact_email || defaultConfig.contact_email]
+        ])
+      });
+    }
+
+    function updateUI() {
+      // Update hero section
+      document.getElementById('heroName').querySelector('.gradient-text').textContent = config.profile_name || defaultConfig.profile_name;
+      document.getElementById('heroTitle').textContent = config.profile_title || defaultConfig.profile_title;
+      document.getElementById('heroTagline').textContent = config.profile_tagline || defaultConfig.profile_tagline;
+      
+      // Update about section
+      document.getElementById('aboutDesc').textContent = config.about_description || defaultConfig.about_description;
+      
+      // Update contact email
+      document.getElementById('contactEmailDisplay').textContent = config.contact_email || defaultConfig.contact_email;
+      
+      // Update footer
+      document.getElementById('footerName').textContent = config.profile_name || defaultConfig.profile_name;
+    }
+
+    // Loading screen
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        document.getElementById('loadingScreen').classList.add('hidden');
+      }, 800);
+    });
+
+    // Create particles
+    function createParticles() {
+      const container = document.getElementById('particles');
+      for (let i = 0; i < 30; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.animationDelay = Math.random() * 15 + 's';
+        particle.style.animationDuration = (15 + Math.random() * 10) + 's';
+        container.appendChild(particle);
+      }
+    }
+    createParticles();
+
+    // Navbar scroll effect
+    const navbar = document.getElementById('navbar');
+    let lastScroll = 0;
+    
+    window.addEventListener('scroll', () => {
+      const currentScroll = window.scrollY;
+      
+      if (currentScroll > 50) {
+        navbar.classList.add('nav-blur');
+      } else {
+        navbar.classList.remove('nav-blur');
+      }
+      
+      lastScroll = currentScroll;
+    });
+
+    // Mobile menu toggle
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    
+    mobileMenuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Close mobile menu on link click
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+      });
+    });
+
+    // Theme toggle
+    const themeToggle = document.getElementById('themeToggle');
+    const mobileThemeToggle = document.getElementById('mobileThemeToggle');
+    const moonIcon = document.getElementById('moonIcon');
+    const sunIcon = document.getElementById('sunIcon');
+    
+    function toggleTheme() {
+      document.documentElement.classList.toggle('light');
+      moonIcon.classList.toggle('hidden');
+      sunIcon.classList.toggle('hidden');
+    }
+    
+    themeToggle.addEventListener('click', toggleTheme);
+    mobileThemeToggle.addEventListener('click', toggleTheme);
+
+    // Scroll animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          
+          // Animate skill bars
+          if (entry.target.classList.contains('skill-item')) {
+            entry.target.querySelector('.skill-bar').classList.add('animated');
+          }
+          
+          // Animate circular progress
+          if (entry.target.querySelector('.progress-circle')) {
+            const circle = entry.target.querySelector('.progress-circle');
+            const progress = circle.dataset.progress;
+            const offset = 251 - (251 * progress / 100);
+            circle.style.strokeDashoffset = offset;
+          }
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right, .skill-item').forEach(el => {
+      observer.observe(el);
+    });
+
+    // Counter animation
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const counter = entry.target;
+          const target = parseInt(counter.dataset.target);
+          let count = 0;
+          const duration = 2000;
+          const increment = target / (duration / 16);
+          
+          const updateCounter = () => {
+            count += increment;
+            if (count < target) {
+              counter.textContent = Math.floor(count);
+              requestAnimationFrame(updateCounter);
+            } else {
+              counter.textContent = target;
+            }
+          };
+          
+          updateCounter();
+          counterObserver.unobserve(counter);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    document.querySelectorAll('.counter').forEach(counter => {
+      counterObserver.observe(counter);
+    });
+
+    // Circular progress animation
+    const progressObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const circle = entry.target;
+          const progress = circle.dataset.progress;
+          const offset = 251 - (251 * progress / 100);
+          setTimeout(() => {
+            circle.style.strokeDashoffset = offset;
+          }, 200);
+          progressObserver.unobserve(circle);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    document.querySelectorAll('.progress-circle').forEach(circle => {
+      progressObserver.observe(circle);
+    });
+
+    // Gallery filter
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const galleryItems = document.querySelectorAll('.gallery-item');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Update active button
+        filterBtns.forEach(b => {
+          b.classList.remove('bg-gradient-to-r', 'from-blue-500', 'to-purple-500', 'text-white');
+          b.classList.add('bg-dark-700', 'text-gray-400');
+        });
+        btn.classList.remove('bg-dark-700', 'text-gray-400');
+        btn.classList.add('bg-gradient-to-r', 'from-blue-500', 'to-purple-500', 'text-white');
+        
+        const filter = btn.dataset.filter;
+        
+        galleryItems.forEach(item => {
+          if (filter === 'all' || item.dataset.category === filter) {
+            item.style.display = 'block';
+          } else {
+            item.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // Certificate modal
+    function openCertModal(title, desc) {
+      const modal = document.getElementById('cert-modal');
+      const content = document.getElementById('cert-modal-content');
+      document.getElementById('cert-modal-title').textContent = title;
+      document.getElementById('cert-modal-desc').textContent = desc;
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      setTimeout(() => {
+        content.classList.remove('scale-95', 'opacity-0');
+        content.classList.add('scale-100', 'opacity-100');
+      }, 10);
+    }
+
+    function closeCertModal() {
+      const modal = document.getElementById('cert-modal');
+      const content = document.getElementById('cert-modal-content');
+      content.classList.remove('scale-100', 'opacity-100');
+      content.classList.add('scale-95', 'opacity-0');
+      setTimeout(() => {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+      }, 300);
+    }
+
+    function openGalleryModal(title, desc, type, media) {
+      const modal = document.getElementById('gallery-modal');
+      const content = document.getElementById('gallery-modal-content');
+      const mediaContainer = document.getElementById('gallery-modal-media');
+      document.getElementById('gallery-modal-title').textContent = title;
+      document.getElementById('gallery-modal-desc').textContent = desc;
+      
+      if (type === 'video') {
+        mediaContainer.innerHTML = `<iframe class="w-full h-full" src="${media}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>`;
+      } else {
+        mediaContainer.innerHTML = `<img src="${media}" alt="${title}" class="w-full h-full object-cover" loading="lazy">`;
+      }
+      
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      setTimeout(() => {
+        content.classList.remove('scale-95', 'opacity-0');
+        content.classList.add('scale-100', 'opacity-100');
+      }, 10);
+    }
+
+    function closeGalleryModal() {
+      const modal = document.getElementById('gallery-modal');
+      const content = document.getElementById('gallery-modal-content');
+      content.classList.remove('scale-100', 'opacity-100');
+      content.classList.add('scale-95', 'opacity-0');
+      setTimeout(() => {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+      }, 300);
+    }
+
+    // Contact form
+    const contactForm = document.getElementById('contactForm');
+    const successMessage = document.getElementById('successMessage');
+
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      // Show success message
+      successMessage.classList.remove('hidden');
+      contactForm.reset();
+      
+      // Hide success message after 5 seconds
+      setTimeout(() => {
+        successMessage.classList.add('hidden');
+      }, 5000);
+    });
+
+    // Back to top button
+    const backToTop = document.getElementById('backToTop');
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 500) {
+        backToTop.classList.remove('opacity-0', 'invisible');
+        backToTop.classList.add('opacity-100', 'visible');
+      } else {
+        backToTop.classList.add('opacity-0', 'invisible');
+        backToTop.classList.remove('opacity-100', 'visible');
+      }
+    });
+
+    backToTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Smooth scroll for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    // Initialize UI
+    updateUI();
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9d32d93fa38cb5ca',t:'MTc3MTk3Njg1My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
