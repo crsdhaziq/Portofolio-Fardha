@@ -846,7 +846,7 @@
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-12" data-aos="fade-up">
                     <p class="text-brand-blue font-semibold tracking-wider uppercase text-sm mb-2">Karya & Portfolio</p>
-                    <h2 class="text-3xl md:text-5xl font-bold text-slate-100 light:text-slate-900">Project <span class="gradient-text">Gallery</span></h2>
+                    <h2 class="text-3xl md:text-5xl font-bold text-slate-100 light:text-slate-900">My <span class="gradient-text">Gallery</span></h2>
                     <div class="w-24 h-1 bg-gradient-to-r from-brand-blue to-brand-purple mx-auto mt-4 rounded-full"></div>
                 </div>
 
@@ -855,6 +855,7 @@
                     <button class="filter-btn px-6 py-2 rounded-full border border-dark-600 light:border-light-600 text-slate-300 light:text-slate-600 hover-target" data-filter="design">Graphic Design</button>
                     <button class="filter-btn px-6 py-2 rounded-full border border-dark-600 light:border-light-600 text-slate-300 light:text-slate-600 hover-target" data-filter="web">Web Dev</button>
                     <button class="filter-btn px-6 py-2 rounded-full border border-dark-600 light:border-light-600 text-slate-300 light:text-slate-600 hover-target" data-filter="it">IT Setup</button>
+                    <button class="filter-btn px-6 py-2 rounded-full border border-dark-600 light:border-light-600 text-slate-300 light:text-slate-600 hover-target" data-filter="video">Video</button>
                 </div>
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="gallery-grid">
@@ -906,6 +907,47 @@
                             <h3 class="text-white text-xl font-bold transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">Mikrotik Network Routing</h3>
                         </div>
                     </div>
+
+                    <div class="gallery-item group relative rounded-[2rem] overflow-hidden cursor-pointer shadow-lg hover:shadow-2xl transition-all duration-500 bg-slate-900 aspect-video mb-8" onclick="openVideoLightbox('F7sGJVUrkjQ')" data-category="video">
+    
+                    <img src="https://img.youtube.com/vi/F7sGJVUrkjQ/maxresdefault.jpg" 
+                        alt="Thumbnail Video" 
+                        class="absolute inset-0 w-full h-full object-cover opacity-70 group-hover:opacity-40 group-hover:scale-110 transition-all duration-700">
+
+                    <div class="absolute inset-0 flex items-center justify-center z-10">
+                        <div class="w-16 h-16 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center border border-white/30 group-hover:scale-125 group-hover:bg-white/40 transition-all duration-500">
+                            <svg class="w-6 h-6 text-white fill-current" viewBox="0 0 24 24">
+                                <path d="M8 5v14l11-7z"/>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent opacity-80"></div>
+                    <div class="absolute bottom-0 left-0 p-6 w-full z-20">
+                        <span class="text-xs font-bold text-blue-400 uppercase tracking-widest mb-2 block">Motivasi</span>
+                        <h3 class="text-white text-xl font-bold translate-y-2 group-hover:translate-y-0 transition-all duration-500">
+                            Konsistensi adalah Kunci
+                        </h3>
+                    </div>
+                </div>
+
+                <div id="videoLightbox" class="fixed inset-0 z-[9999] bg-black/95 hidden items-center justify-center p-4 backdrop-blur-sm">
+                    <button onclick="closeVideoLightbox()" class="absolute top-6 right-6 text-white/70 hover:text-white transition-colors z-[10000]">
+                        <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+    
+                    <div class="w-full max-w-5xl aspect-video rounded-2xl overflow-hidden shadow-2xl border border-white/10 relative">
+                        <iframe id="videoPlayer" 
+                                class="w-full h-full" 
+                                src="" 
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                allowfullscreen>
+                        </iframe>
+                    </div>
+                </div>
 
                 </div>
             </div>
@@ -1046,6 +1088,44 @@
             backSpeed: 40,
             backDelay: 2000,
             loop: true
+        });
+
+        //Video
+        function openVideoLightbox(videoId) {
+            const modal = document.getElementById('videoLightbox');
+            const player = document.getElementById('videoPlayer');
+    
+        // FORMAT PENTING: Harus menggunakan /embed/ bukan link youtube biasa
+        player.src = "https://www.youtube.com/embed/" + videoId + "?autoplay=1&rel=0";
+    
+        // Tampilkan modal
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+    
+        // Kunci scroll layar utama
+        document.body.style.overflow = 'hidden';
+        }
+
+        function closeVideoLightbox() {
+            const modal = document.getElementById('videoLightbox');
+            const player = document.getElementById('videoPlayer');
+            
+            // Sembunyikan modal
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            
+            // Hapus src agar video berhenti berputar di latar belakang
+            player.src = "";
+            
+            // Aktifkan kembali scroll
+            document.body.style.overflow = 'auto';
+        }
+
+        // Menutup modal jika area hitam di luar video di klik
+        document.getElementById('videoLightbox').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeVideoLightbox();
+            }
         });
 
         // 4. Custom Cursor
