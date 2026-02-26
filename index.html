@@ -77,8 +77,9 @@
             padding: 0;
             box-sizing: border-box;
             font-family: 'Poppins', sans-serif;
-            cursor: none; /* Hide default cursor for custom cursor */
-        }
+         }
+            /* cursor: ; /* Hide default cursor for custom cursor */
+       
 
         html, body {
             overflow-x: hidden;
@@ -1048,22 +1049,22 @@
         });
 
         // 4. Custom Cursor
-        const cursorDot = document.querySelector('.cursor-dot');
-        const cursorOutline = document.querySelector('.cursor-outline');
+        //const cursorDot = document.querySelector('.cursor-dot');
+       //const cursorOutline = document.querySelector('.cursor-outline');
         
-        window.addEventListener('mousemove', (e) => {
-            const posX = e.clientX;
-            const posY = e.clientY;
+        //window.addEventListener('mousemove', (e) => {
+            //const posX = e.clientX;
+            //const posY = e.clientY;
 
-            cursorDot.style.left = `${posX}px`;
-            cursorDot.style.top = `${posY}px`;
+            //cursorDot.style.left = `${posX}px`;
+            //cursorDot.style.top = `${posY}px`;
             
             // Add a slight delay to the outline for smooth effect
-            cursorOutline.animate({
-                left: `${posX}px`,
-                top: `${posY}px`
-            }, { duration: 500, fill: "forwards" });
-        });
+            //cursorOutline.animate({
+                //left: `${posX}px`,
+                //top: `${posY}px`
+            //}, { duration: 500, fill: "forwards" });
+        //});
 
         // Add hover effect to interactive elements
         const hoverTargets = document.querySelectorAll('.hover-target, a, button, input, textarea');
