@@ -1,0 +1,1733 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Professional Portfolio - Fardha Ziqri Putra Purwandi | IT Support & Graphic Designer">
+    <meta name="author" content="Fardha Ziqri Putra Purwandi">
+    <meta name="theme-color" content="#0f172a">
+    <title>Portofolio | Fardha Ziqri Putra Purwandi</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class', // Menggunakan class 'dark' pada tag html
+            theme: {
+                extend: {
+                    fontFamily: {
+                        poppins: ['Poppins', 'sans-serif']
+                    },
+                    colors: {
+                        dark: {
+                            900: '#0f172a',
+                            800: '#1e293b',
+                            700: '#334155',
+                            600: '#475569'
+                        },
+                        light: {
+                            900: '#f8fafc',
+                            800: '#f1f5f9',
+                            700: '#e2e8f0'
+                        },
+                        brand: {
+                            blue: '#3b82f6',
+                            purple: '#8b5cf6',
+                            pink: '#ec4899',
+                            orange: '#f97316'
+                        }
+                    },
+                    animation: {
+                        'blob': 'blob 7s infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'spin-slow': 'spin 8s linear infinite',
+                        'pulse-glow': 'pulseGlow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'bounce-slow': 'bounce 3s infinite',
+                    },
+                    keyframes: {
+                        blob: {
+                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        pulseGlow: {
+                            '0%, 100%': { opacity: 1, filter: 'brightness(1)' },
+                            '50%': { opacity: .7, filter: 'brightness(1.5)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom CSS -->
+    <style>
+        /* Base Styles & Typography */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            /*cursor: none; /* Sembunyikan cursor default untuk custom cursor */
+        }
+
+        /* Tampilkan cursor default pada perangkat sentuh / mobile */
+        @media (hover: none) and (pointer: coarse) {
+            * { cursor: auto; }
+            .cursor-dot, .cursor-outline { display: none !important; }
+        }
+
+        html, body {
+            overflow-x: hidden;
+            width: 100%;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9; /* Light mode track */
+        }
+        .dark ::-webkit-scrollbar-track {
+            background: #0f172a; /* Dark mode track */
+        }
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(to bottom, #3b82f6, #8b5cf6);
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(to bottom, #2563eb, #7c3aed);
+        }
+
+        /* Scroll Progress Bar */
+        #scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: linear-gradient(to right, #3b82f6, #ec4899);
+            z-index: 9999;
+            transition: width 0.1s ease;
+            border-radius: 0 2px 2px 0;
+            box-shadow: 0 0 10px rgba(139, 92, 246, 0.5);
+            width: 0%;
+        }
+
+        /* Custom Cursor */
+        /*.cursor-dot, .cursor-outline {
+            position: fixed;
+            top: 0;
+            left: 0;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            z-index: 10000;
+            pointer-events: none;
+        }
+        .cursor-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #3b82f6;
+            transition: background-color 0.3s;
+        }
+        .cursor-outline {
+            width: 40px;
+            height: 40px;
+            border: 2px solid rgba(139, 92, 246, 0.5);
+            transition: width 0.2s, height 0.2s, background-color 0.2s, border-color 0.2s;
+        }
+        .cursor-hover {
+            width: 60px;
+            height: 60px;
+            background-color: rgba(59, 130, 246, 0.1);
+            border-color: #ec4899;
+        }
+
+        /* Loading Screen (Preloader) */
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #f8fafc;
+            z-index: 100000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.6s ease, visibility 0.6s ease;
+        }
+        .dark #preloader {
+            background: #0f172a;
+        }
+        .loader-ring {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 4px solid transparent;
+            border-top-color: #3b82f6;
+            border-right-color: #8b5cf6;
+            border-bottom-color: #ec4899;
+            animation: spin 1s linear infinite;
+        }
+        .loader-text {
+            position: absolute;
+            font-weight: 700;
+            font-size: 18px;
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6, #ec4899);
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+
+        /* Utilities */
+        .gradient-text {
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6, #ec4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6, #ec4899);
+        }
+        
+        /* Glassmorphism Navbar */
+        .glassmorphism {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        .dark .glassmorphism {
+            background: rgba(15, 23, 42, 0.8);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Cards & Hover Effects */
+        .card-hover-effect {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .card-hover-effect:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(59, 130, 246, 0.15);
+        }
+        .dark .card-hover-effect:hover {
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .card-border-gradient {
+            position: relative;
+            border-radius: 1rem;
+            z-index: 1;
+        }
+        .card-border-gradient::before {
+            content: "";
+            position: absolute;
+            inset: -2px;
+            border-radius: 1.1rem;
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6, #ec4899);
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        .card-border-gradient:hover::before {
+            opacity: 1;
+        }
+
+        /* Profile Ring */
+        .profile-ring-container {
+            position: relative;
+            width: 280px;
+            height: 280px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .profile-ring-container::before {
+            content: '';
+            position: absolute;
+            inset: -5px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #3b82f6, #8b5cf6, #ec4899, #3b82f6);
+            background-size: 400%;
+            animation: gradientBorder 8s linear infinite;
+            z-index: 0;
+        }
+        @keyframes gradientBorder {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .profile-img {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            z-index: 1;
+            border: 6px solid #ffffff;
+        }
+        .dark .profile-img {
+            border-color: #0f172a;
+        }
+
+        /* Skills Points System (Replacement for Progress Bars) */
+        .skill-points {
+            display: flex;
+            gap: 6px;
+            margin-top: 8px;
+        }
+        .skill-point {
+            height: 12px;
+            flex: 1;
+            border-radius: 4px;
+            background-color: #e2e8f0; /* Default light */
+            transition: all 0.5s ease;
+            transform: scale(0);
+            opacity: 0;
+        }
+        .dark .skill-point {
+            background-color: #1e293b; /* Default dark */
+        }
+        .skill-point.filled {
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+            box-shadow: 0 0 5px rgba(59, 130, 246, 0.3);
+        }
+        
+        /* Point Animation Class */
+        .skill-point.animate-point {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        /* Timeline Styles */
+        .timeline-container {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .timeline-container::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background: linear-gradient(to bottom, #3b82f6, #8b5cf6);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+            border-radius: 2px;
+        }
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+        }
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            right: -10px;
+            background-color: #ffffff;
+            border: 4px solid #8b5cf6;
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+            box-shadow: 0 0 10px #8b5cf6;
+        }
+        .dark .timeline-item::after {
+            background-color: #0f172a;
+        }
+        .left-timeline { left: 0; }
+        .right-timeline { left: 50%; }
+        .right-timeline::after { left: -10px; }
+        @media screen and (max-width: 768px) {
+            .timeline-container::after { left: 31px; }
+            .timeline-item { width: 100%; padding-left: 70px; padding-right: 25px; }
+            .timeline-item::after { left: 21px; }
+            .right-timeline { left: 0%; }
+        }
+
+        /* Gallery Filters */
+        .filter-btn {
+            transition: all 0.3s ease;
+        }
+        .filter-btn.active {
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            color: white;
+            border-color: transparent;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+        }
+        .gallery-item {
+            transition: all 0.4s ease;
+        }
+        .gallery-item.hide {
+            display: none;
+            opacity: 0;
+            transform: scale(0.8);
+        }
+        .gallery-overlay {
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(4px);
+            opacity: 0;
+            transition: all 0.4s ease;
+        }
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        /* Lightbox */
+        #lightbox {
+            transition: opacity 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+        
+        /* Floating Particles Container */
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 0;
+        }
+
+        /* Inputs */
+        .input-field {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            color: #0f172a;
+            border-radius: 0.75rem;
+            transition: all 0.3s ease;
+        }
+        .dark .input-field {
+            background: rgba(30, 41, 59, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+        .input-field:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+        }
+
+        /* Map styling */
+        .map-container iframe {
+            filter: none;
+            transition: filter 0.5s ease;
+        }
+        .dark .map-container iframe {
+            filter: invert(90%) hue-rotate(180deg);
+        }
+
+        /* FAQ Accordion */
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out, padding 0.4s ease;
+        }
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            padding-bottom: 1.5rem;
+        }
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+            color: #ec4899;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 dark:bg-dark-900 dark:text-slate-200 transition-colors duration-300">
+
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="relative flex justify-center items-center">
+            <div class="loader-ring"></div>
+            <div class="loader-text">FZ</div>
+        </div>
+    </div> 
+
+    <!-- Custom Cursor (Hidden on Mobile) -->
+    <div class="cursor-dot hidden md:block"></div>
+    <div class="cursor-outline hidden md:block"></div> >
+
+    <!-- Scroll Progress -->
+    <div id="scroll-progress"></div>
+
+    <!-- Navigation Bar -->
+    <nav class="fixed top-0 w-full z-50 glassmorphism transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center cursor-pointer hover-target" onclick="window.scrollTo(0,0)">
+                    <span class="text-2xl font-bold gradient-text tracking-wider">Fardha.</span>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-1">
+                    <ul class="flex space-x-6 text-sm font-medium">
+                        <li><a href="#home" class="nav-link px-3 py-2 rounded-md hover:text-brand-blue transition-colors duration-300 hover-target active">Home</a></li>
+                        <li><a href="#about" class="nav-link px-3 py-2 rounded-md hover:text-brand-blue transition-colors duration-300 hover-target">About</a></li>
+                        <li><a href="#services" class="nav-link px-3 py-2 rounded-md hover:text-brand-blue transition-colors duration-300 hover-target">Services</a></li>
+                        <li><a href="#skills" class="nav-link px-3 py-2 rounded-md hover:text-brand-blue transition-colors duration-300 hover-target">Skills</a></li>
+                        <li><a href="#experience" class="nav-link px-3 py-2 rounded-md hover:text-brand-blue transition-colors duration-300 hover-target">Experience</a></li>
+                        <li><a href="#gallery" class="nav-link px-3 py-2 rounded-md hover:text-brand-blue transition-colors duration-300 hover-target">Portfolio</a></li>
+                        <li><a href="#contact" class="nav-link px-3 py-2 rounded-md hover:text-brand-blue transition-colors duration-300 hover-target">Contact</a></li>
+                    </ul>
+                    
+                    <!-- Theme Toggle Desktop -->
+                    <button id="theme-toggle" class="ml-6 p-2 rounded-full bg-slate-200 hover:bg-slate-300 dark:bg-dark-800 dark:hover:bg-dark-700 transition-colors duration-300 hover-target" aria-label="Toggle Dark Mode">
+                        <i class="fas fa-moon text-brand-purple hidden dark:block"></i>
+                        <i class="fas fa-sun text-yellow-500 block dark:hidden"></i>
+                    </button>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center gap-4">
+                    <button id="mobile-theme-toggle" class="p-2 rounded-full bg-slate-200 dark:bg-dark-800 transition-colors" aria-label="Toggle Dark Mode">
+                        <i class="fas fa-moon text-brand-purple hidden dark:block"></i>
+                        <i class="fas fa-sun text-yellow-500 block dark:hidden"></i>
+                    </button>
+                    <button id="mobile-menu-btn" class="text-slate-800 dark:text-slate-300 hover:text-brand-blue focus:outline-none hover-target">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Panel -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-dark-900 border-b border-slate-200 dark:border-dark-700 shadow-xl absolute w-full transition-all">
+            <ul class="px-4 pt-2 pb-6 space-y-2 text-center">
+                <li><a href="#home" class="mobile-link block px-3 py-3 rounded-md text-base font-medium hover:bg-slate-100 dark:hover:bg-dark-800">Home</a></li>
+                <li><a href="#about" class="mobile-link block px-3 py-3 rounded-md text-base font-medium hover:bg-slate-100 dark:hover:bg-dark-800">About</a></li>
+                <li><a href="#services" class="mobile-link block px-3 py-3 rounded-md text-base font-medium hover:bg-slate-100 dark:hover:bg-dark-800">Services</a></li>
+                <li><a href="#skills" class="mobile-link block px-3 py-3 rounded-md text-base font-medium hover:bg-slate-100 dark:hover:bg-dark-800">Skills</a></li>
+                <li><a href="#experience" class="mobile-link block px-3 py-3 rounded-md text-base font-medium hover:bg-slate-100 dark:hover:bg-dark-800">Experience</a></li>
+                <li><a href="#gallery" class="mobile-link block px-3 py-3 rounded-md text-base font-medium hover:bg-slate-100 dark:hover:bg-dark-800">Portfolio</a></li>
+                <li><a href="#contact" class="mobile-link block px-3 py-3 rounded-md text-base font-medium hover:bg-slate-100 dark:hover:bg-dark-800">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        
+        <!-- ==================== HERO SECTION ==================== -->
+        <section id="home" class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
+            <!-- Background Elements -->
+            <div id="particles-js"></div>
+            <div class="absolute top-20 -left-20 w-72 h-72 bg-brand-blue rounded-full mix-blend-multiply filter blur-3xl opacity-30 dark:opacity-20 animate-blob"></div>
+            <div class="absolute top-40 -right-20 w-72 h-72 bg-brand-purple rounded-full mix-blend-multiply filter blur-3xl opacity-30 dark:opacity-20 animate-blob" style="animation-delay: 2s;"></div>
+            <div class="absolute -bottom-20 left-1/2 w-72 h-72 bg-brand-pink rounded-full mix-blend-multiply filter blur-3xl opacity-30 dark:opacity-20 animate-blob" style="animation-delay: 4s;"></div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+                <div class="flex flex-col-reverse lg:flex-row items-center justify-between gap-12">
+                    
+                    <!-- Text Content -->
+                    <div class="w-full lg:w-1/2 text-center lg:text-left" data-aos="fade-right" data-aos-duration="1200">
+                        <p class="text-brand-blue font-semibold tracking-wide mb-2 uppercase text-sm">Hi. Welcome!</p>
+                        <h1 class="text-4xl sm:text-5xl lg:text-7xl font-bold leading-tight mb-4 text-slate-900 dark:text-slate-100">
+                            I'am <br>
+                            <span class="gradient-text">Fardha Ziqri</span>
+                        </h1>
+                        <h2 class="text-2xl sm:text-3xl font-medium mb-6 text-slate-600 dark:text-slate-300">
+                            I am a <span id="typed-text" class="text-brand-purple font-bold"></span>
+                        </h2>
+                        <p class="text-slate-500 dark:text-slate-400 mb-8 max-w-xl mx-auto lg:mx-0 leading-relaxed">
+                            Creating digital experiences through a combination of robust IT infrastructure and creative visual design.
+                        </p>
+                        
+                        <!-- CTA Buttons -->
+                        <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+                            <a href="#contact" class="hover-target w-full sm:w-auto px-8 py-3.5 bg-gradient-to-r from-brand-blue to-brand-purple text-white rounded-full font-medium transition-all hover:shadow-[0_0_20px_rgba(59,130,246,0.5)] hover:scale-105 flex items-center justify-center gap-2">
+                                <i class="fas fa-paper-plane"></i> Contact Me
+                            </a>
+                            <a href="https://drive.google.com/file/d/1aIKRKd0GTMS9DIEYvb-iZ6Nbpn9TRuz-/view?usp=sharing" target="_blank" class="hover-target w-full sm:w-auto px-8 py-3.5 border-2 border-brand-purple text-brand-purple dark:text-brand-purple rounded-full font-medium transition-all hover:bg-brand-purple hover:text-white flex items-center justify-center gap-2">
+                                <i class="fas fa-download"></i> View CV
+                            </a>
+                        </div>
+
+                        <!-- Social Links -->
+                        <div class="mt-10 flex items-center justify-center lg:justify-start gap-5">
+                            <a href="https://linkedin.com/in/fardhaziqri" target="_blank" class="hover-target w-10 h-10 rounded-full bg-slate-200 dark:bg-dark-800 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:text-brand-blue hover:bg-slate-300 dark:hover:bg-dark-700 transition-all hover:-translate-y-1">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="https://github.com/crsdhaziq" class="hover-target w-10 h-10 rounded-full bg-slate-200 dark:bg-dark-800 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-300 dark:hover:bg-dark-700 transition-all hover:-translate-y-1">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="https://www.instagram.com/fardhaziqrip" class="hover-target w-10 h-10 rounded-full bg-slate-200 dark:bg-dark-800 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:text-brand-pink hover:bg-slate-300 dark:hover:bg-dark-700 transition-all hover:-translate-y-1">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Profile Image -->
+                    <div class="w-full lg:w-1/2 flex justify-center lg:justify-end" data-aos="fade-left" data-aos-duration="1200" data-aos-delay="200">
+                        <div class="profile-ring-container animate-float hover-target">
+                            <!-- Fallback Image if PP.jpeg is not found -->
+                            <img src="PP.jpeg" onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'" alt="Fardha Ziqri" class="profile-img shadow-2xl">
+                            
+                            <!-- Floating Badges -->
+                            <div class="absolute -top-4 -right-4 bg-white dark:bg-dark-800 p-3 rounded-xl shadow-lg border border-slate-100 dark:border-dark-700 animate-pulse-glow z-10">
+                                <i class="fas fa-code text-brand-blue text-2xl"></i>
+                            </div>
+                            <div class="absolute bottom-4 -left-4 bg-white dark:bg-dark-800 p-3 rounded-xl shadow-lg border border-slate-100 dark:border-dark-700 animate-pulse-glow z-10" style="animation-delay: 1s;">
+                                <i class="fas fa-pen-nib text-brand-pink text-2xl"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Scroll Down Indicator -->
+            <!-- <a href="#about" class="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center text-slate-400 hover:text-brand-blue transition-colors hover-target animate-bounce">
+                <span class="text-xs font-medium mb-1 tracking-widest uppercase">Scroll</span>
+                <i class="fas fa-chevron-down"></i>
+            </a> -->
+        </section>
+
+        <!-- ==================== ABOUT SECTION ==================== -->
+        <section id="about" class="py-24 bg-white dark:bg-dark-800 relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16" data-aos="fade-up">
+                    <p class="text-brand-blue font-semibold tracking-wider uppercase text-sm mb-2">Get to know me</p>
+                    <h2 class="text-3xl md:text-5xl font-bold text-slate-900 dark:text-slate-100">About <span class="gradient-text">Me</span></h2>
+                    <div class="w-24 h-1 bg-gradient-to-r from-brand-blue to-brand-purple mx-auto mt-4 rounded-full"></div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    
+                    <!-- About Image & Experience Badge -->
+                    <div class="col-span-1 lg:col-span-5 relative" data-aos="fade-right">
+                        <div class="relative rounded-2xl overflow-hidden group shadow-2xl">
+                            <div class="absolute inset-0 bg-gradient-to-t from-dark-900 to-transparent opacity-60 z-10 group-hover:opacity-40 transition-opacity duration-300"></div>
+                            <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Workspace Fardha" class="w-full h-auto object-cover transform group-hover:scale-110 transition-transform duration-700">
+                            
+                            <!-- Experience Badge -->
+                            <div class="absolute bottom-6 left-6 z-20 bg-white/20 backdrop-blur-md border border-white/30 p-4 rounded-xl shadow-xl flex items-center gap-4">
+                                <div class="text-4xl font-bold text-brand-blue num-counter" data-target="1.5">0</div>
+                                <div class="text-sm text-white font-medium leading-tight">Years<br>Experience</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- About Text & Info -->
+                    <div class="col-span-1 lg:col-span-7" data-aos="fade-left">
+                        <h3 class="text-2xl font-bold mb-4 text-slate-900 dark:text-slate-100">IT Support & Creative Designer</h3>
+                        <p class="text-slate-600 dark:text-slate-400 mb-6 leading-relaxed text-justify">
+                            I am a technical IT skills with creative design touches. Starting from a background in Computer and Networking Engineering, I have developed into a junior who can maintain company network infrastructure while designing engaging web interfaces and visual materials. I am very adaptable, enjoy learning new things, and am ready to provide the best solutions to achieve your business goals.
+                        </p>
+                        
+                        <!-- Personal Info Grid -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
+                            <div class="flex items-center gap-4 p-3 rounded-lg hover:bg-slate-50 dark:hover:bg-dark-900 transition-colors">
+                                <div class="w-12 h-12 rounded-full bg-slate-100 dark:bg-dark-700 flex items-center justify-center text-brand-blue shadow-inner">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-slate-500 uppercase tracking-wider">Name</p>
+                                    <p class="font-semibold text-slate-800 dark:text-slate-200">Fardha Ziqri P. P.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-4 p-3 rounded-lg hover:bg-slate-50 dark:hover:bg-dark-900 transition-colors">
+                                <div class="w-12 h-12 rounded-full bg-slate-100 dark:bg-dark-700 flex items-center justify-center text-brand-purple shadow-inner">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-slate-500 uppercase tracking-wider">Email</p>
+                                    <p class="font-semibold text-slate-800 dark:text-slate-200 text-sm">fardha.works@gmail.com</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-4 p-3 rounded-lg hover:bg-slate-50 dark:hover:bg-dark-900 transition-colors">
+                                <div class="w-12 h-12 rounded-full bg-slate-100 dark:bg-dark-700 flex items-center justify-center text-brand-pink shadow-inner">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-slate-500 uppercase tracking-wider">Location</p>
+                                    <p class="font-semibold text-slate-800 dark:text-slate-200">Bogor, Indonesia</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-4 p-3 rounded-lg hover:bg-slate-50 dark:hover:bg-dark-900 transition-colors">
+                                <div class="w-12 h-12 rounded-full bg-slate-100 dark:bg-dark-700 flex items-center justify-center text-green-500 shadow-inner">
+                                    <i class="fas fa-briefcase"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-slate-500 uppercase tracking-wider">Status</p>
+                                    <p class="font-semibold text-green-500">Available for Work</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Counters -->
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8 pt-8 border-t border-slate-200 dark:border-dark-700">
+                            <div class="text-center p-4">
+                                <h4 class="text-4xl font-extrabold gradient-text num-counter mb-2" data-target="17">0</h4>
+                                <p class="text-sm font-medium text-slate-500">Projects Completed</p>
+                            </div>
+                            <div class="text-center p-4">
+                                <h4 class="text-4xl font-extrabold gradient-text num-counter mb-2" data-target="15">0</h4>
+                                <p class="text-sm font-medium text-slate-500">Happy Clients</p>
+                            </div>
+                            <div class="text-center p-4">
+                                <h4 class="text-4xl font-extrabold gradient-text num-counter mb-2" data-target="3">0</h4>
+                                <p class="text-sm font-medium text-slate-500">Awards Won</p>
+                            </div>
+                            <div class="text-center p-4">
+                                <h4 class="text-4xl font-extrabold gradient-text num-counter mb-2" data-target="30">0</h4>
+                                <p class="text-sm font-medium text-slate-500">Coffees Consumed</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SERVICES SECTION (NEW) ==================== -->
+        <section id="services" class="py-24 bg-slate-100 dark:bg-dark-900 relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16" data-aos="fade-up">
+                    <p class="text-brand-orange font-semibold tracking-wider uppercase text-sm mb-2">What i do?</p>
+                    <h2 class="text-3xl md:text-5xl font-bold text-slate-900 dark:text-slate-100">Specialized<span class="gradient-text"> Services</span></h2>
+                    <div class="w-24 h-1 bg-gradient-to-r from-brand-orange to-brand-pink mx-auto mt-4 rounded-full"></div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Service 1 -->
+                    <div class="bg-white dark:bg-dark-800 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 card-hover-effect border border-slate-200 dark:border-dark-700" data-aos="fade-up" data-aos-delay="0">
+                        <div class="w-16 h-16 rounded-full bg-brand-blue/10 flex items-center justify-center text-brand-blue text-2xl mb-6">
+                            <i class="fas fa-network-wired"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-slate-100 mb-4">IT Support & Networking</h3>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+                            Setting up, managing and maintaining local area network (LAN/WAN) infrastructure using Mikrotik. Maintaining hardware and software to ensure business operations run smoothly.
+                        </p>
+                    </div>
+
+                    <!-- Service 2 -->
+                    <div class="bg-white dark:bg-dark-800 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 card-hover-effect border border-slate-200 dark:border-dark-700" data-aos="fade-up" data-aos-delay="100">
+                        <div class="w-16 h-16 rounded-full bg-brand-purple/10 flex items-center justify-center text-brand-purple text-2xl mb-6">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-slate-100 mb-4">Web Development</h3>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+                            Designing and developing modern, responsive and SEO-friendly websites. From simple landing pages to complex information systems using the latest technology.
+                        </p>
+                    </div>
+
+                    <!-- Service 3 -->
+                    <div class="bg-white dark:bg-dark-800 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 card-hover-effect border border-slate-200 dark:border-dark-700" data-aos="fade-up" data-aos-delay="200">
+                        <div class="w-16 h-16 rounded-full bg-brand-pink/10 flex items-center justify-center text-brand-pink text-2xl mb-6">
+                            <i class="fas fa-paint-brush"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-slate-100 mb-4">Graphic Design</h3>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+                            Creating a strong brand visual identity. From logo design and social media promotional materials to UI/UX and professional print materials.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SKILLS SECTION (UPDATED DGN POIN) ==================== -->
+        <section id="skills" class="py-24 relative overflow-hidden bg-white dark:bg-dark-800">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16" data-aos="fade-up">
+                    <p class="text-brand-purple font-semibold tracking-wider uppercase text-sm mb-2">Skills & Expertise</p>
+                    <h2 class="text-3xl md:text-5xl font-bold text-slate-900 dark:text-slate-100">My <span class="gradient-text">Skills</span></h2>
+                    <div class="w-24 h-1 bg-gradient-to-r from-brand-purple to-brand-pink mx-auto mt-4 rounded-full"></div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
+                    
+                    <!-- Technical Skills -->
+                    <div data-aos="fade-right">
+                        <div class="flex items-center gap-4 mb-8">
+                            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-brand-blue to-cyan-500 flex items-center justify-center text-white shadow-lg">
+                                <i class="fas fa-server text-xl"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-slate-900 dark:text-slate-100">Technical / IT Support</h3>
+                        </div>
+
+                        <!-- Skills List -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            
+                            <!-- Skill 1 -->
+                            <div class="flex items-center gap-4 p-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:shadow-md transition-shadow">
+                                <div class="w-12 h-12 rounded-lg bg-blue-50 dark:bg-slate-700/50 flex items-center justify-center text-brand-blue dark:text-cyan-400">
+                                    <i class="fas fa-tools text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-slate-700 dark:text-slate-200">Hardware Troubleshooting</h4>
+                                    <p class="text-sm font-medium text-brand-blue dark:text-cyan-400">Expert</p>
+                                </div>
+                            </div>
+
+                            <!-- Skill 2 -->
+                            <div class="flex items-center gap-4 p-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:shadow-md transition-shadow">
+                                <div class="w-12 h-12 rounded-lg bg-blue-50 dark:bg-slate-700/50 flex items-center justify-center text-brand-blue dark:text-cyan-400">
+                                    <i class="fas fa-network-wired text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-slate-700 dark:text-slate-200">Networking / Mikrotik</h4>
+                                    <p class="text-sm font-medium text-brand-blue dark:text-cyan-400">Advanced</p>
+                                </div>
+                            </div>
+
+                            <!-- Skill 3 -->
+                            <div class="flex items-center gap-4 p-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:shadow-md transition-shadow">
+                                <div class="w-12 h-12 rounded-lg bg-blue-50 dark:bg-slate-700/50 flex items-center justify-center text-brand-blue dark:text-cyan-400">
+                                    <i class="fab fa-linux text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-slate-700 dark:text-slate-200">Windows / Linux Server</h4>
+                                    <p class="text-sm font-medium text-brand-blue dark:text-cyan-400">Advanced</p>
+                                </div>
+                            </div>
+
+                            <!-- Skill 4 -->
+                            <div class="flex items-center gap-4 p-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:shadow-md transition-shadow">
+                                <div class="w-12 h-12 rounded-lg bg-blue-50 dark:bg-slate-700/50 flex items-center justify-center text-brand-blue dark:text-cyan-400">
+                                    <i class="fas fa-code text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-slate-700 dark:text-slate-200">HTML / CSS / JS / Tailwind</h4>
+                                    <p class="text-sm font-medium text-brand-blue dark:text-cyan-400">Advance</p>
+                                </div>
+                            </div>
+
+                            <!-- Skill 5 -->
+                            <div class="flex items-center gap-4 p-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:shadow-md transition-shadow">
+                                <div class="w-12 h-12 rounded-lg bg-blue-50 dark:bg-slate-700/50 flex items-center justify-center text-brand-blue dark:text-cyan-400">
+                                    <i class="fas fa-video text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-slate-700 dark:text-slate-200">CCTV Instalation</h4>
+                                    <p class="text-sm font-medium text-brand-blue dark:text-cyan-400">Advance</p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Creative Skills -->
+                    <div data-aos="fade-left">
+                        <div class="flex items-center gap-4 mb-8">
+                            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-brand-purple to-brand-pink flex items-center justify-center text-white shadow-lg">
+                                <i class="fas fa-palette text-xl"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-slate-900 dark:text-slate-100">Design & Creative</h3>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-4">
+                            <!-- Tool 1 -->
+                            <div class="card-border-gradient p-5 bg-white dark:bg-dark-900 rounded-2xl flex items-center gap-4 card-hover-effect hover-target">
+                                <img src="ai-logo.png" alt="Illustrator" class="w-10 h-10">
+                                <div>
+                                    <h4 class="font-bold text-slate-800 dark:text-slate-200">Illustrator</h4>
+                                    <p class="text-xs font-medium text-brand-purple">Advanced</p>
+                                </div>
+                            </div>
+                            <!-- Tool 2 -->
+                            <div class="card-border-gradient p-5 bg-white dark:bg-dark-900 rounded-2xl flex items-center gap-4 card-hover-effect hover-target">
+                                <img src="ps-logo.png" alt="Photoshop" class="w-10 h-10">
+                                <div>
+                                    <h4 class="font-bold text-slate-800 dark:text-slate-200">Photoshop</h4>
+                                    <p class="text-xs font-medium text-brand-purple">Advanced</p>
+                                </div>
+                            </div>
+                            <!-- Tool 3 -->
+                            <div class="card-border-gradient p-5 bg-white dark:bg-dark-900 rounded-2xl flex items-center gap-4 card-hover-effect hover-target">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma" class="w-10 h-10">
+                                <div>
+                                    <h4 class="font-bold text-slate-800 dark:text-slate-200">Figma</h4>
+                                    <p class="text-xs font-medium text-brand-purple">Intermediate</p>
+                                </div>
+                            </div>
+                            <!-- Tool 4 -->
+                            <div class="card-border-gradient p-5 bg-white dark:bg-dark-900 rounded-2xl flex items-center gap-4 card-hover-effect hover-target">
+                                <img src="cd-logo.png" alt="CorelDraw" class="w-10 h-10">
+                                <div>
+                                    <h4 class="font-bold text-slate-800 dark:text-slate-200">CorelDraw</h4>
+                                    <p class="text-xs font-medium text-brand-purple">Advanced</p>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- Soft Skills Tags -->
+                        <div class="mt-8">
+                            <h4 class="text-sm font-semibold text-slate-500 uppercase tracking-wider mb-4">Soft Skills</h4>
+                            <div class="flex flex-wrap gap-3">
+                                <span class="px-4 py-2 bg-slate-100 dark:bg-dark-900 rounded-full text-sm font-medium border border-slate-200 dark:border-dark-700 hover:border-brand-blue transition-colors cursor-default">Problem Solving</span>
+                                <span class="px-4 py-2 bg-slate-100 dark:bg-dark-900 rounded-full text-sm font-medium border border-slate-200 dark:border-dark-700 hover:border-brand-purple transition-colors cursor-default">Teamwork</span>
+                                <span class="px-4 py-2 bg-slate-100 dark:bg-dark-900 rounded-full text-sm font-medium border border-slate-200 dark:border-dark-700 hover:border-brand-pink transition-colors cursor-default">Communication</span>
+                                <span class="px-4 py-2 bg-slate-100 dark:bg-dark-900 rounded-full text-sm font-medium border border-slate-200 dark:border-dark-700 hover:border-brand-blue transition-colors cursor-default">Adaptability</span>
+                                <span class="px-4 py-2 bg-slate-100 dark:bg-dark-900 rounded-full text-sm font-medium border border-slate-200 dark:border-dark-700 hover:border-brand-purple transition-colors cursor-default">Creativity</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== EXPERIENCE SECTION ==================== -->
+        <section id="experience" class="py-24 bg-slate-100 dark:bg-dark-900">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16" data-aos="fade-up">
+                    <p class="text-brand-blue font-semibold tracking-wider uppercase text-sm mb-2">Career Path</p>
+                    <h2 class="text-3xl md:text-5xl font-bold text-slate-900 dark:text-slate-100">My <span class="gradient-text">Experience</span></h2>
+                    <div class="w-24 h-1 bg-gradient-to-r from-brand-blue to-brand-purple mx-auto mt-4 rounded-full"></div>
+                </div>
+
+                <div class="timeline-container">
+                    
+                    <div class="timeline-item left-timeline" data-aos="fade-right">
+                        <div class="bg-white dark:bg-dark-800 p-6 rounded-2xl shadow-xl border border-slate-200 dark:border-dark-700 card-hover-effect relative overflow-hidden">
+                            <div class="absolute top-0 right-0 w-24 h-24 bg-brand-blue/5 rounded-bl-full z-0"></div>
+                            <div class="relative z-10">
+                                <span class="inline-block px-3 py-1 bg-brand-blue/10 text-brand-blue rounded-full text-xs font-bold mb-3 border border-brand-blue/20">2024 - Now</span>
+                                <h3 class="text-xl font-bold text-slate-900 dark:text-slate-100 mb-1">Web Developer & Graphic Designer</h3>
+                                <p class="text-brand-purple text-sm font-semibold mb-4">Freelance / Independent</p>
+                                <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed text-justify">
+                                    Developing a range of portfolio websites, landing pages and web-based information systems. In addition, creating brand visual identities (logos, branding), social media promotional materials, and designing UI/UX.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item right-timeline" data-aos="fade-left">
+                        <div class="bg-white dark:bg-dark-800 p-6 rounded-2xl shadow-xl border border-slate-200 dark:border-dark-700 card-hover-effect relative overflow-hidden">
+                            <div class="absolute top-0 left-0 w-24 h-24 bg-brand-purple/5 rounded-br-full z-0"></div>
+                            <div class="relative z-10">
+                                <span class="inline-block px-3 py-1 bg-brand-purple/10 text-brand-purple rounded-full text-xs font-bold mb-3 border border-brand-purple/20">2 July - 24 December 2023</span>
+                                <h3 class="text-xl font-bold text-slate-900 dark:text-slate-100 mb-1">IT Support Internship</h3>
+                                <p class="text-brand-purple text-sm font-semibold mb-4">PT Bonet Utama</p>
+                                <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed text-justify">
+                                    Handling day-to-day hardware and software troubleshooting. Managing and monitoring the local network infrastructure (LAN/WAN) using Mikrotik routers. Playing an active role in providing technical support (Helpdesk) to customers to ensure operations run smoothly.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== CERTIFICATES SECTION ==================== -->
+        <section id="certificates" class="py-24 bg-white dark:bg-dark-800">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16" data-aos="fade-up">
+                    <p class="text-brand-pink font-semibold tracking-wider uppercase text-sm mb-2">Achievements & Validation</p>
+                    <h2 class="text-3xl md:text-5xl font-bold text-slate-900 dark:text-slate-100"><span class="gradient-text">Certificates</span></h2>
+                    <div class="w-24 h-1 bg-gradient-to-r from-brand-purple to-brand-pink mx-auto mt-4 rounded-full"></div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    
+                    <!-- Certificate 1 -->
+                    <div class="bg-slate-50 dark:bg-dark-900 rounded-2xl overflow-hidden shadow-lg border border-slate-200 dark:border-dark-700 group card-hover-effect" data-aos="zoom-in" data-aos-delay="0">
+                        <div class="h-48 overflow-hidden relative cursor-pointer hover-target" onclick="openImageLightbox(this)">
+                            <!-- Fallback provided -->
+                            <img src="revou-data-analytics.jpeg" alt="Mini Course - Intro to Data Analytics" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-brand-blue/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex justify-center items-center">
+                                <i class="fas fa-search-plus text-3xl text-white"></i>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-lg font-bold text-slate-900 dark:text-slate-100 mb-2 line-clamp-1">Intro to Data Analytics</h3>
+                            <p class="text-brand-orange text-sm font-semibold mb-4">RevoU Mini Course</p>
+                            <div class="flex justify-between items-center border-t border-slate-200 dark:border-dark-700 pt-4">
+                                <span class="text-xs text-slate-500"><i class="far fa-calendar-alt mr-1"></i> April 2024</span>
+                                <a href="https://drive.google.com/file/d/1rcIkqQLxuTsm4pU5mPN1NP4gzZzLeZru/view?usp=sharing" target="_blank" class="text-xs font-semibold text-brand-blue hover:text-brand-purple flex items-center gap-1 transition-colors">Verify <i class="fas fa-external-link-alt"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Certificate 2 -->
+                    <div class="bg-slate-50 dark:bg-dark-900 rounded-2xl overflow-hidden shadow-lg border border-slate-200 dark:border-dark-700 group card-hover-effect" data-aos="zoom-in" data-aos-delay="100">
+                        <div class="h-48 overflow-hidden relative cursor-pointer hover-target" onclick="openImageLightbox(this)">
+                            <img src="pkl-pt-bonet-utama.jpeg" alt="Internship PT Bonet Utama" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-brand-purple/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex justify-center items-center">
+                                <i class="fas fa-search-plus text-3xl text-white"></i>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-lg font-bold text-slate-900 dark:text-slate-100 mb-2 line-clamp-1">IT Support Internship</h3>
+                            <p class="text-brand-purple text-sm font-semibold mb-4">PT Bonet Utama</p>
+                            <div class="flex justify-between items-center border-t border-slate-200 dark:border-dark-700 pt-4">
+                                <span class="text-xs text-slate-500"><i class="far fa-calendar-alt mr-1"></i> Des 2025</span>
+                                <a href="https://drive.google.com/file/d/17_h6t3ZQOJrwQr-7KIExhVc8Ssek2p6s/view?usp=sharing" target="_blank" class="text-xs font-semibold text-brand-purple hover:text-brand-pink flex items-center gap-1 transition-colors">Verify <i class="fas fa-external-link-alt"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Certificate 3 -->
+                    <div class="bg-slate-50 dark:bg-dark-900 rounded-2xl overflow-hidden shadow-lg border border-slate-200 dark:border-dark-700 group card-hover-effect" data-aos="zoom-in" data-aos-delay="200">
+                        <div class="h-48 overflow-hidden relative cursor-pointer hover-target" onclick="openImageLightbox(this)">
+                            <img src="stem-ipb-u.jpeg" alt="STEM IEE IPB" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-brand-pink/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex justify-center items-center">
+                                <i class="fas fa-search-plus text-3xl text-white"></i>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-lg font-bold text-slate-900 dark:text-slate-100 mb-2 line-clamp-1">STEM IEE Certificate</h3>
+                            <p class="text-brand-pink text-sm font-semibold mb-4">IPB University</p>
+                            <div class="flex justify-between items-center border-t border-slate-200 dark:border-dark-700 pt-4">
+                                <span class="text-xs text-slate-500"><i class="far fa-calendar-alt mr-1"></i> Nov 2025</span>
+                                <a href="https://drive.google.com/file/d/18ewX9xdiS-TXvtzoEZu89j_eRhtNccIk/view?usp=sharing" target="_blank" class="text-xs font-semibold text-brand-pink hover:text-brand-blue flex items-center gap-1 transition-colors">Verify <i class="fas fa-external-link-alt"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== GALLERY / PORTFOLIO SECTION ==================== -->
+        <section id="gallery" class="py-24 bg-slate-100 dark:bg-dark-900">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12" data-aos="fade-up">
+                    <p class="text-brand-blue font-semibold tracking-wider uppercase text-sm mb-2">Work & Portfolio</p>
+                    <h2 class="text-3xl md:text-5xl font-bold text-slate-900 dark:text-slate-100">My <span class="gradient-text">Gallery</span></h2>
+                    <div class="w-24 h-1 bg-gradient-to-r from-brand-blue to-brand-purple mx-auto mt-4 rounded-full"></div>
+                </div>
+
+                <!-- Filters -->
+                <div class="flex flex-wrap justify-center gap-3 mb-12" data-aos="fade-up" data-aos-delay="100">
+                    <button class="filter-btn active px-6 py-2 rounded-full border font-medium border-slate-300 dark:border-dark-600 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-dark-700 transition hover-target" data-filter="all">All Works</button>
+                    <button class="filter-btn px-6 py-2 rounded-full border font-medium border-slate-300 dark:border-dark-600 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-dark-700 transition hover-target" data-filter="design">Graphic Design</button>
+                    <button class="filter-btn px-6 py-2 rounded-full border font-medium border-slate-300 dark:border-dark-600 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-dark-700 transition hover-target" data-filter="web">Web Dev</button>
+                    <button class="filter-btn px-6 py-2 rounded-full border font-medium border-slate-300 dark:border-dark-600 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-dark-700 transition hover-target" data-filter="it">IT Setup</button>
+                    <button class="filter-btn px-6 py-2 rounded-full border font-medium border-slate-300 dark:border-dark-600 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-dark-700 transition hover-target" data-filter="video">Video</button>
+                </div>
+
+                <!-- Grid Items -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="gallery-grid">
+                    
+                    <!-- Item 1: Design -->
+                    <div class="gallery-item rounded-xl overflow-hidden relative cursor-pointer group hover-target shadow-lg" data-category="design" data-aos="zoom-in" onclick="openImageLightbox(this)">
+                        <img src="aurora-art.jpg" alt="Brand Identity - Aurora" class="w-full h-64 object-cover">
+                        <div class="gallery-overlay absolute inset-0 flex flex-col justify-end p-6">
+                            <span class="text-brand-pink text-xs font-bold tracking-wider mb-1">GRAPHIC DESIGN</span>
+                            <h3 class="text-white text-xl font-bold transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">Brand Identity</h3>
+                        </div>
+                    </div>
+
+                    <!-- Item 2: Web -->
+                    <div class="gallery-item rounded-xl overflow-hidden relative cursor-pointer group hover-target shadow-lg" data-category="web" data-aos="zoom-in" data-aos-delay="100" onclick="openImageLightbox(this)">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="E-Commerce Website Mockup" class="w-full h-64 object-cover">
+                        <div class="gallery-overlay absolute inset-0 flex flex-col justify-end p-6">
+                            <span class="text-brand-blue text-xs font-bold tracking-wider mb-1">WEB DEV</span>
+                            <h3 class="text-white text-xl font-bold transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">E-Commerce Website</h3>
+                        </div>
+                    </div>
+
+                    <!-- Item 3: IT -->
+                    <div class="gallery-item rounded-xl overflow-hidden relative cursor-pointer group hover-target shadow-lg" data-category="it" data-aos="zoom-in" data-aos-delay="200" onclick="openImageLightbox(this)">
+                        <img src="i-bear.jpg" onerror="this.src='https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'" alt="Enterprise Server Setup" class="w-full h-64 object-cover">
+                        <div class="gallery-overlay absolute inset-0 flex flex-col justify-end p-6">
+                            <span class="text-brand-purple text-xs font-bold tracking-wider mb-1">IT SETUP</span>
+                            <h3 class="text-white text-xl font-bold transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">Enterprise Server Setup</h3>
+                        </div>
+                    </div>
+
+                    <!-- Item 4: Design -->
+                    <div class="gallery-item rounded-xl overflow-hidden relative cursor-pointer group hover-target shadow-lg" data-category="design" data-aos="zoom-in" onclick="openImageLightbox(this)">
+                        <img src="i-jellfish.jpg" onerror="this.src='https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'" alt="Social Media Campaign Design" class="w-full h-64 object-cover">
+                        <div class="gallery-overlay absolute inset-0 flex flex-col justify-end p-6">
+                            <span class="text-brand-pink text-xs font-bold tracking-wider mb-1">GRAPHIC DESIGN</span>
+                            <h3 class="text-white text-xl font-bold transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">Social Media Campaign</h3>
+                        </div>
+                    </div>
+
+                    <!-- Item 5: Web -->
+                    <div class="gallery-item rounded-xl overflow-hidden relative cursor-pointer group hover-target shadow-lg" data-category="web" data-aos="zoom-in" data-aos-delay="100" onclick="openImageLightbox(this)">
+                        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Company Profile CMS Dashboard" class="w-full h-64 object-cover">
+                        <div class="gallery-overlay absolute inset-0 flex flex-col justify-end p-6">
+                            <span class="text-brand-blue text-xs font-bold tracking-wider mb-1">WEB DEV</span>
+                            <h3 class="text-white text-xl font-bold transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">Company Profile CMS</h3>
+                        </div>
+                    </div>
+
+                    <!-- Item 6: IT -->
+                    <div class="gallery-item rounded-xl overflow-hidden relative cursor-pointer group hover-target shadow-lg" data-category="it" data-aos="zoom-in" data-aos-delay="200" onclick="openImageLightbox(this)">
+                        <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Mikrotik Network Routing" class="w-full h-64 object-cover">
+                        <div class="gallery-overlay absolute inset-0 flex flex-col justify-end p-6">
+                            <span class="text-brand-purple text-xs font-bold tracking-wider mb-1">IT SETUP</span>
+                            <h3 class="text-white text-xl font-bold transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">Mikrotik Network Routing</h3>
+                        </div>
+                    </div>
+
+                    <!-- Item 7: Video (Special Layout) -->
+                    <div class="gallery-item col-span-1 sm:col-span-2 lg:col-span-3 rounded-2xl overflow-hidden relative cursor-pointer group hover-target shadow-lg aspect-[21/9] md:aspect-[3/1]" data-category="video" data-aos="zoom-in" onclick="openVideoLightbox('i-GxOO8Vhxw')">
+                        <img src="https://img.youtube.com/vi/i-GxOO8Vhxw/maxresdefault.jpg" alt="Video Motivasi Thumbnail" class="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:opacity-60 group-hover:scale-105 transition-all duration-700">
+                        
+                        <!-- Play Button Overlay -->
+                        <div class="absolute inset-0 flex items-center justify-center z-10">
+                            <div class="w-20 h-20 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center border border-white/40 group-hover:scale-110 group-hover:bg-brand-pink/60 transition-all duration-500 shadow-2xl">
+                                <i class="fas fa-play text-white text-3xl ml-2"></i>
+                            </div>
+                        </div>
+
+                        <!-- Text Overlay -->
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent opacity-90"></div>
+                        <div class="absolute bottom-0 left-0 p-6 md:p-10 w-full z-20">
+                            <span class="text-xs font-bold text-brand-pink bg-brand-pink/20 px-3 py-1 rounded-full uppercase tracking-widest mb-3 inline-block"><i class="fas fa-video mr-1"></i> Video Project</span>
+                            <h3 class="text-white text-2xl md:text-4xl font-bold translate-y-2 group-hover:translate-y-0 transition-all duration-500">
+                                Video Editing - Motivasi Disiplin
+                            </h3>
+                            <p class="text-slate-300 mt-2 text-sm max-w-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500">Pengeditan video menggunakan Premiere Pro dengan transisi dinamis, color grading, dan audio mixing yang imersif.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== FAQ SECTION (NEW) ==================== -->
+        <section id="faq" class="py-24 bg-white dark:bg-dark-800 relative">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16" data-aos="fade-up">
+                    <p class="text-brand-purple font-semibold tracking-wider uppercase text-sm mb-2">Further Information</p>
+                    <h2 class="text-3xl font-bold text-slate-900 dark:text-slate-100">Frequently Asked <span class="gradient-text">Questions</span></h2>
+                    <div class="w-24 h-1 bg-gradient-to-r from-brand-blue to-brand-purple mx-auto mt-4 rounded-full"></div>
+                </div>
+
+                <div class="space-y-4">
+                    <!-- FAQ 1 -->
+                    <div class="faq-item bg-slate-50 dark:bg-dark-900 rounded-xl border border-slate-200 dark:border-dark-700 overflow-hidden" data-aos="fade-up" data-aos-delay="0">
+                        <button class="w-full text-left px-6 py-5 flex justify-between items-center focus:outline-none hover-target" onclick="toggleFaq(this)">
+                            <span class="font-bold text-slate-800 dark:text-slate-200">Do you take on freelance projects?</span>
+                            <i class="fas fa-chevron-down faq-icon text-slate-400 transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-answer px-6">
+                            <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed border-t border-slate-200 dark:border-dark-700 pt-4">
+                                Yes, I am open to freelance projects including website development, small to medium office network setup, and graphic design needs. Please contact me to discuss detail.
+                            </p>
+                        </div>
+                    </div>
+                    <!-- FAQ 2 -->
+                    <div class="faq-item bg-slate-50 dark:bg-dark-900 rounded-xl border border-slate-200 dark:border-dark-700 overflow-hidden" data-aos="fade-up" data-aos-delay="100">
+                        <button class="w-full text-left px-6 py-5 flex justify-between items-center focus:outline-none hover-target" onclick="toggleFaq(this)">
+                            <span class="font-bold text-slate-800 dark:text-slate-200">What website technologies do you usually use?</span>
+                            <i class="fas fa-chevron-down faq-icon text-slate-400 transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-answer px-6">
+                            <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed border-t border-slate-200 dark:border-dark-700 pt-4">
+                                I primarily use HTML5, CSS, and pure JavaScript combined with the Tailwind CSS framework for modern and responsive interfaces. For specific needs.
+                            </p>
+                        </div>
+                    </div>
+                    <!-- FAQ 3 -->
+                    <div class="faq-item bg-slate-50 dark:bg-dark-900 rounded-xl border border-slate-200 dark:border-dark-700 overflow-hidden" data-aos="fade-up" data-aos-delay="200">
+                        <button class="w-full text-left px-6 py-5 flex justify-between items-center focus:outline-none hover-target" onclick="toggleFaq(this)">
+                            <span class="font-bold text-slate-800 dark:text-slate-200">How long is the estimated timeline for developing a website?</span>
+                            <i class="fas fa-chevron-down faq-icon text-slate-400 transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-answer px-6">
+                            <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed border-t border-slate-200 dark:border-dark-700 pt-4">
+                                The development timeline varies depending on the complexity of features, number of pages, and the client's readiness of content (text/images). However, for standard websites or static company profiles, it typically takes about 1 to 2 weeks of work.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== CONTACT SECTION ==================== -->
+        <section id="contact" class="py-24 bg-slate-100 dark:bg-dark-900 relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16" data-aos="fade-up">
+                    <p class="text-brand-blue font-semibold tracking-wider uppercase text-sm mb-2">Let's Work Together</p>
+                    <h2 class="text-3xl md:text-5xl font-bold text-slate-900 dark:text-slate-100"><span class="gradient-text">Contact</span> Me</h2>
+                    <div class="w-24 h-1 bg-gradient-to-r from-brand-blue to-brand-purple mx-auto mt-4 rounded-full"></div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    
+                    <!-- Contact Info & Map -->
+                    <div data-aos="fade-right">
+                        <h3 class="text-2xl font-bold mb-6 text-slate-900 dark:text-slate-100">Contact Me Directly</h3>
+                        <p class="text-slate-600 dark:text-slate-400 mb-8 leading-relaxed">Do you have a new project, need network installation help, want to design a company logo, or just want to say hello? Don't hesitate to reach out to me through the contact information below.</p>
+                        
+                        <div class="space-y-6 mb-8">
+                            <div class="flex items-center gap-5 group cursor-pointer hover-target" onclick="window.location.href='https://wa.me/6285172163325'">
+                                <div class="w-14 h-14 bg-white dark:bg-dark-800 rounded-full flex justify-center items-center text-2xl text-brand-blue shadow-lg border border-slate-200 dark:border-dark-700 group-hover:bg-brand-blue group-hover:text-white transition-all">
+                                    <i class="fab fa-whatsapp"></i>
+                                </div>
+                                <div>
+                                    <p class="text-sm font-medium text-slate-500">Phone / WhatsApp</p>
+                                    <p class="text-lg font-bold text-slate-800 dark:text-slate-200 group-hover:text-brand-blue transition-colors">+62 851 7216 3325</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center gap-5 group cursor-pointer hover-target" onclick="window.location.href='mailto:fardha.works@gmail.com'">
+                                <div class="w-14 h-14 bg-white dark:bg-dark-800 rounded-full flex justify-center items-center text-2xl text-brand-purple shadow-lg border border-slate-200 dark:border-dark-700 group-hover:bg-brand-purple group-hover:text-white transition-all">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div onclick="window.location.href='mailto:fardha.works@gmail.com'">
+                                    <p class="text-sm font-medium text-slate-500">Email Address</p>
+                                    <p class="text-lg font-bold text-slate-800 dark:text-slate-200 group-hover:text-brand-purple transition-colors">fardha.works@gmail.com</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center gap-5 group">
+                                <div class="w-14 h-14 bg-white dark:bg-dark-800 rounded-full flex justify-center items-center text-2xl text-brand-pink shadow-lg border border-slate-200 dark:border-dark-700 group-hover:bg-brand-pink group-hover:text-white transition-all">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div>
+                                    <p class="text-sm font-medium text-slate-500">Location</p>
+                                    <p class="text-lg font-bold text-slate-800 dark:text-slate-200">Bogor, West Java - Indonesia</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Map -->
+                        <div class="map-container w-full h-64 rounded-2xl overflow-hidden shadow-lg border border-slate-200 dark:border-dark-700">
+                            <!-- Cleaned up Google Maps Embed URL -->
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126816.78899429891!2d106.7661183775687!3d-6.64385993272851!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69c44a0cd6aab5%3A0x301576d14feb9a0!2sKota%20Bogor%2C%20Jawa%20Barat!5e0!3m2!1sid!2sid!4v1700000000000!5m2!1sid!2sid" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                    </div>
+
+                    <!-- Contact Form -->
+                    <div data-aos="fade-left">
+                        <div class="bg-white dark:bg-dark-800 p-8 md:p-10 rounded-3xl shadow-2xl border border-slate-200 dark:border-dark-700">
+                            <h3 class="text-2xl font-bold mb-6 text-slate-900 dark:text-slate-100">Send Message</h3>
+                            <form id="contact-form" class="space-y-6">
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                                    <div>
+                                        <label class="block text-sm font-bold text-slate-700 dark:text-slate-400 mb-2">Full Name</label>
+                                        <input type="text" id="name" required class="input-field hover-target" placeholder="Cth: Fardha Ziqri">
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-bold text-slate-700 dark:text-slate-400 mb-2">Email Address</label>
+                                        <input type="email" id="email" required class="input-field hover-target" placeholder="Cth: fardha@example.com">
+                                    </div>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-bold text-slate-700 dark:text-slate-400 mb-2">Subject Job</label>
+                                    <input type="text" id="subject" required class="input-field hover-target" placeholder="Cth: Project Proposal for Website Company Profile">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-bold text-slate-700 dark:text-slate-400 mb-2">Details Message</label>
+                                    <textarea id="message" rows="5" required class="input-field hover-target resize-none" placeholder="Please describe your project or requirements in detail here..."></textarea>
+                                </div>
+                                <button type="submit" id="submit-btn" class="w-full py-4 bg-gradient-to-r from-brand-blue to-brand-purple text-white rounded-xl font-bold text-lg hover:shadow-[0_0_20px_rgba(139,92,246,0.4)] transition-all hover:-translate-y-1 hover-target flex items-center justify-center gap-2">
+                                    <span>Send Message</span> <i class="fas fa-paper-plane ml-1"></i>
+                                </button>
+                                
+                                <!-- Alert Messages -->
+                                <div id="form-success" class="hidden p-4 rounded-lg bg-green-100 text-green-700 border border-green-200 text-center font-medium">
+                                    <i class="fas fa-check-circle mr-2"></i>  Your message has been sent! I’ll reply shortly.
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="bg-white dark:bg-[#0b1120] border-t border-slate-200 dark:border-dark-800 py-12 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <h2 class="text-3xl font-bold gradient-text mb-4">Fardha Ziqri.</h2>
+            <p class="text-slate-600 dark:text-slate-500 text-sm mb-8 max-w-md mx-auto">
+                Creating integrated IT solutions and stunning visual designs with total dedication.
+            </p>
+            
+            <div class="flex justify-center space-x-6 mb-8">
+                <a href="https://linkedin.com/in/fardhaziqri" target="_blank" class="w-10 h-10 rounded-full bg-slate-100 dark:bg-dark-800 flex justify-center items-center text-slate-600 dark:text-slate-400 hover:text-brand-blue hover:bg-slate-200 dark:hover:bg-dark-700 transition-all text-xl hover-target"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://github.com/crsdhaziq" class="w-10 h-10 rounded-full bg-slate-100 dark:bg-dark-800 flex justify-center items-center text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200 dark:hover:bg-dark-700 transition-all text-xl hover-target"><i class="fab fa-github"></i></a>
+                <a href="https://www.instagram.com/fardhaziqrip" class="w-10 h-10 rounded-full bg-slate-100 dark:bg-dark-800 flex justify-center items-center text-slate-600 dark:text-slate-400 hover:text-brand-pink hover:bg-slate-200 dark:hover:bg-dark-700 transition-all text-xl hover-target"><i class="fab fa-instagram"></i></a>
+            </div>
+            
+            <div class="w-full h-px bg-slate-200 dark:bg-dark-700 mb-8 max-w-3xl mx-auto"></div>
+            
+            <p class="text-slate-500 dark:text-slate-600 text-sm font-medium">&copy; <span id="year"></span> Fardha Ziqri Putra Purwandi. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- ==================== MODALS (LIGHTBOXES) ==================== -->
+    
+    <!-- Image Lightbox -->
+    <div id="imageLightbox" class="fixed inset-0 z-[100000] bg-black/95 hidden flex-col justify-center items-center opacity-0 transition-opacity duration-300 backdrop-blur-md">
+        <button onclick="closeImageLightbox()" class="absolute top-6 right-6 w-12 h-12 rounded-full bg-white/10 flex items-center justify-center text-white text-2xl hover:bg-brand-pink hover:text-white transition-colors hover-target">&times;</button>
+        <img id="lightbox-img" src="" alt="Enlarged Portfolio" class="max-w-[90%] max-h-[85vh] object-contain rounded-lg shadow-2xl scale-95 transition-transform duration-300 mt-4">
+        <div id="lightbox-caption" class="absolute bottom-6 left-0 w-full text-center text-white text-xl font-bold tracking-wide"></div>
+    </div>
+
+    <!-- Video Lightbox -->
+    <div id="videoLightbox" class="fixed inset-0 z-[100000] bg-black/95 hidden items-center justify-center p-4 backdrop-blur-md opacity-0 transition-opacity duration-300">
+        <button onclick="closeVideoLightbox()" class="absolute top-6 right-6 w-12 h-12 rounded-full bg-white/10 flex items-center justify-center text-white/70 hover:bg-brand-pink hover:text-white transition-colors hover-target z-[10000]">
+            <i class="fas fa-times text-xl"></i>
+        </button>
+        <div class="w-full max-w-5xl aspect-video rounded-2xl overflow-hidden shadow-[0_0_50px_rgba(0,0,0,0.8)] border border-white/10 relative scale-95 transition-transform duration-300" id="video-container">
+            <iframe id="videoPlayer" class="w-full h-full bg-black" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </div>
+
+
+    <!-- ==================== SCRIPTS ==================== -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            /* --- 1. Preloader --- */
+            const preloader = document.getElementById('preloader');
+            window.addEventListener('load', () => {
+                preloader.style.opacity = '0';
+                setTimeout(() => {
+                    preloader.style.visibility = 'hidden';
+                    preloader.style.display = 'none'; // Completely remove from document flow
+                    
+                    // Init AOS only after preloader is done
+                    AOS.init({
+                        duration: 1000,
+                        once: false,
+                        offset: 100,
+                        easing: 'ease-out-cubic'
+                    });
+                }, 600);
+            });
+
+            /* --- 2. Dynamic Year in Footer --- */
+            document.getElementById('year').textContent = new Date().getFullYear();
+
+            /* --- 3. Typed.js Initialization --- */
+            new Typed('#typed-text', {
+                strings: ['IT Support.', 'Graphic Designer.', 'Web Developer.', 'Problem Solver.'],
+                typeSpeed: 60,
+                backSpeed: 40,
+                backDelay: 2000,
+                loop: true
+            });
+
+            /* --- 4. Custom Cursor Logic --- */
+            const isTouchDevice = () => {
+                return (('ontouchstart' in window) || (navigator.maxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0));
+            };
+
+            if (!isTouchDevice()) {
+                const cursorDot = document.querySelector('.cursor-dot');
+                const cursorOutline = document.querySelector('.cursor-outline');
+                
+                window.addEventListener('mousemove', (e) => {
+                    const posX = e.clientX;
+                    const posY = e.clientY;
+
+                    cursorDot.style.left = `${posX}px`;
+                    cursorDot.style.top = `${posY}px`;
+                    
+                    // Smooth delay for outline using animate API
+                    cursorOutline.animate({
+                        left: `${posX}px`,
+                        top: `${posY}px`
+                    }, { duration: 500, fill: "forwards" });
+                });
+
+                // Hover Effects
+                const hoverTargets = document.querySelectorAll('.hover-target, a, button, input, textarea');
+                hoverTargets.forEach(target => {
+                    target.addEventListener('mouseenter', () => {
+                        cursorOutline.classList.add('cursor-hover');
+                        cursorDot.style.backgroundColor = '#ec4899'; // Brand Pink
+                    });
+                    target.addEventListener('mouseleave', () => {
+                        cursorOutline.classList.remove('cursor-hover');
+                        cursorDot.style.backgroundColor = '#3b82f6'; // Brand Blue
+                    });
+                });
+            }
+
+            /* --- 5. Navigation & Scroll Progress --- */
+            const progressBar = document.getElementById('scroll-progress');
+            const navbar = document.getElementById('navbar');
+
+            window.addEventListener('scroll', () => {
+                let scrollTop = window.scrollY;
+                let docHeight = document.body.offsetHeight;
+                let winHeight = window.innerHeight;
+                let scrollPercent = scrollTop / (docHeight - winHeight);
+                let scrollPercentRounded = Math.round(scrollPercent * 100);
+                
+                progressBar.style.width = scrollPercentRounded + '%';
+
+                // Navbar sticky effect
+                if (scrollTop > 50) {
+                    navbar.classList.add('shadow-lg');
+                    navbar.style.padding = "0";
+                } else {
+                    navbar.classList.remove('shadow-lg');
+                    navbar.style.padding = "10px 0";
+                }
+
+                highlightActiveNavLink();
+            });
+
+            /* --- 6. Mobile Menu --- */
+            const mobileBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileLinks = document.querySelectorAll('.mobile-link');
+
+            mobileBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+                const icon = mobileBtn.querySelector('i');
+                if(mobileMenu.classList.contains('hidden')){
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                } else {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times');
+                }
+            });
+
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                    mobileBtn.querySelector('i').classList.replace('fa-times', 'fa-bars');
+                });
+            });
+
+            /* --- 7. Dark / Light Theme Toggle --- */
+            const themeToggles = [document.getElementById('theme-toggle'), document.getElementById('mobile-theme-toggle')];
+            const htmlElement = document.documentElement;
+            
+            // Check LocalStorage or System Preference
+            if (localStorage.theme === 'light' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: light)').matches)) {
+                htmlElement.classList.remove('dark');
+            } else {
+                htmlElement.classList.add('dark');
+            }
+
+            themeToggles.forEach(btn => {
+                if(btn) {
+                    btn.addEventListener('click', () => {
+                        htmlElement.classList.toggle('dark');
+                        
+                        if (htmlElement.classList.contains('dark')) {
+                            localStorage.theme = 'dark';
+                        } else {
+                            localStorage.theme = 'light';
+                        }
+                        
+                        // Re-initialize particles to match theme colors
+                        if(window.pJSDom && window.pJSDom.length > 0){
+                            window.pJSDom[0].pJS.fn.vendors.destroypJS();
+                            window.pJSDom = [];
+                        }
+                        initParticles();
+                    });
+                }
+            });
+
+            /* --- 8. Observer Based Animations (Better Performance than Scroll events) --- */
+            
+            // Number Counter Observer
+            const counters = document.querySelectorAll('.num-counter');
+            let hasCounted = false;
+
+            const counterObserver = new IntersectionObserver((entries) => {
+                if(entries[0].isIntersecting && !hasCounted) {
+                    hasCounted = true;
+                    counters.forEach(counter => {
+                        const target = +counter.getAttribute('data-target');
+                        const increment = target / 50; 
+                        
+                        const updateCount = () => {
+                            const count = +counter.innerText;
+                            if(count < target) {
+                                counter.innerText = Math.ceil(count + increment);
+                                setTimeout(updateCount, 40);
+                            } else {
+                                counter.innerText = target + "+";
+                            }
+                        };
+                        updateCount();
+                    });
+                }
+            }, { threshold: 0.5 });
+            
+            const aboutSection = document.getElementById('about');
+            if(aboutSection) counterObserver.observe(aboutSection);
+
+            // Skills Point Observer (Animates the 10-point system)
+            const skillObserver = new IntersectionObserver((entries) => {
+                if(entries[0].isIntersecting) {
+                    const skillContainers = document.querySelectorAll('.skill-points');
+                    skillContainers.forEach(container => {
+                        const targetLevel = parseInt(container.getAttribute('data-level'));
+                        const points = container.querySelectorAll('.skill-point');
+                        
+                        points.forEach((point, index) => {
+                            setTimeout(() => {
+                                point.classList.add('animate-point');
+                                if(index < targetLevel) {
+                                    point.classList.add('filled');
+                                }
+                            }, index * 100); // Staggered animation
+                        });
+                    });
+                    skillObserver.disconnect(); // Only animate once
+                }
+            }, { threshold: 0.3 });
+            
+            const skillSection = document.getElementById('skills');
+            if(skillSection) skillObserver.observe(skillSection);
+
+            /* --- 9. Gallery Filters --- */
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const galleryItems = document.querySelectorAll('.gallery-item');
+
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    filterBtns.forEach(b => b.classList.remove('active', 'bg-gradient-to-r', 'from-brand-blue', 'to-brand-purple', 'text-white', 'border-transparent'));
+                    
+                    btn.classList.add('active');
+
+                    const filterValue = btn.getAttribute('data-filter');
+
+                    galleryItems.forEach(item => {
+                        if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+                            item.classList.remove('hide');
+                            setTimeout(() => { item.style.display = 'block'; }, 50);
+                        } else {
+                            item.classList.add('hide');
+                            setTimeout(() => { item.style.display = 'none'; }, 400); 
+                        }
+                    });
+                    
+                    setTimeout(() => AOS.refresh(), 500); // Refresh AOS positioning
+                });
+            });
+
+            /* --- 10. Active Link Highlighting --- */
+            function highlightActiveNavLink() {
+                const sections = document.querySelectorAll('section');
+                const navLinks = document.querySelectorAll('.nav-link');
+                
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (window.scrollY >= (sectionTop - sectionHeight / 3)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('text-brand-blue');
+                    if (link.getAttribute('href').includes(current)) {
+                        link.classList.add('text-brand-blue');
+                    }
+                });
+            }
+
+            /* --- 11. FAQ Accordion Toggle --- */
+            window.toggleFaq = function(button) {
+                const faqItem = button.parentElement;
+                
+                // Close others
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    if(item !== faqItem) {
+                        item.classList.remove('active');
+                    }
+                });
+                
+                // Toggle current
+                faqItem.classList.toggle('active');
+            }
+
+            /* --- 12. Particles JS Setup --- */
+            function initParticles() {
+                if(typeof particlesJS === 'undefined') return;
+
+                const isDark = document.documentElement.classList.contains('dark');
+                const particleColor = isDark ? "#8b5cf6" : "#3b82f6"; // Purple in dark, Blue in light
+                const linkColor = isDark ? "#475569" : "#cbd5e1"; 
+
+                particlesJS("particles-js", {
+                    "particles": {
+                        "number": { "value": 40, "density": { "enable": true, "value_area": 800 } },
+                        "color": { "value": particleColor },
+                        "shape": { "type": "circle" },
+                        "opacity": { "value": 0.3, "random": true },
+                        "size": { "value": 3, "random": true },
+                        "line_linked": { "enable": true, "distance": 150, "color": linkColor, "opacity": 0.4, "width": 1 },
+                        "move": { "enable": true, "speed": 1.5, "direction": "none", "random": true, "straight": false, "out_mode": "out", "bounce": false }
+                    },
+                    "interactivity": {
+                        "detect_on": "canvas",
+                        "events": {
+                            "onhover": { "enable": true, "mode": "grab" },
+                            "onclick": { "enable": true, "mode": "push" },
+                            "resize": true
+                        },
+                        "modes": {
+                            "grab": { "distance": 140, "line_linked": { "opacity": 0.5 } },
+                            "push": { "particles_nb": 2 }
+                        }
+                    },
+                    "retina_detect": true
+                });
+            }
+            initParticles();
+
+            /* --- 13. Form Submission Simulation --- */
+            const contactForm = document.getElementById('contact-form');
+            const submitBtn = document.getElementById('submit-btn');
+            const formSuccess = document.getElementById('form-success');
+
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const originalText = submitBtn.innerHTML;
+                
+                // Loading UI
+                submitBtn.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i> Sending...';
+                submitBtn.disabled = true;
+
+                // Simulate API Request (2s)
+                setTimeout(() => {
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                    
+                    formSuccess.classList.remove('hidden');
+                    contactForm.reset();
+                    
+                    // Hide alert after 5s
+                    setTimeout(() => {
+                        formSuccess.classList.add('hidden');
+                    }, 5000);
+                }, 2000);
+            });
+
+        }); // End DOMContentLoaded
+
+        /* --- 14. Global Lightbox Functions --- */
+        
+        // --- Image Lightbox ---
+        const imageLightbox = document.getElementById('imageLightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const lightboxCaption = document.getElementById('lightbox-caption');
+
+        window.openImageLightbox = function(element) {
+            const imgEl = element.querySelector('img');
+            const titleEl = element.parentElement.querySelector('h3'); // Depending on structure
+            
+            // Extract info based on clicked element (Gallery vs Certificate structure differs slightly)
+            const imgSrc = imgEl.src;
+            const titleText = titleEl ? titleEl.innerText : element.nextElementSibling.querySelector('h3').innerText;
+            
+            lightboxImg.src = imgSrc;
+            lightboxCaption.innerText = titleText;
+            
+            imageLightbox.classList.remove('hidden');
+            imageLightbox.classList.add('flex');
+            
+            // Lock body scroll
+            document.body.style.overflow = 'hidden';
+
+            // Animate In
+            setTimeout(() => {
+                imageLightbox.classList.remove('opacity-0');
+                lightboxImg.classList.remove('scale-95');
+                lightboxImg.classList.add('scale-100');
+            }, 10);
+        };
+
+        window.closeImageLightbox = function() {
+            imageLightbox.classList.add('opacity-0');
+            lightboxImg.classList.remove('scale-100');
+            lightboxImg.classList.add('scale-95');
+            
+            // Unlock body scroll
+            document.body.style.overflow = 'auto';
+
+            setTimeout(() => {
+                imageLightbox.classList.add('hidden');
+                imageLightbox.classList.remove('flex');
+                lightboxImg.src = '';
+            }, 300);
+        };
+
+        // --- Video Lightbox ---
+        const videoLightbox = document.getElementById('videoLightbox');
+        const videoPlayer = document.getElementById('videoPlayer');
+        const videoContainer = document.getElementById('video-container');
+
+        window.openVideoLightbox = function(videoId) {
+            videoPlayer.src = "https://www.youtube.com/embed/" + videoId + "?autoplay=1&rel=0";
+            
+            videoLightbox.classList.remove('hidden');
+            videoLightbox.classList.add('flex');
+            
+            // Lock body scroll
+            document.body.style.overflow = 'hidden';
+
+            // Animate In
+            setTimeout(() => {
+                videoLightbox.classList.remove('opacity-0');
+                videoContainer.classList.remove('scale-95');
+                videoContainer.classList.add('scale-100');
+            }, 10);
+        };
+
+        window.closeVideoLightbox = function() {
+            videoLightbox.classList.add('opacity-0');
+            videoContainer.classList.remove('scale-100');
+            videoContainer.classList.add('scale-95');
+            
+            // Unlock body scroll
+            document.body.style.overflow = 'auto';
+
+            setTimeout(() => {
+                videoLightbox.classList.add('hidden');
+                videoLightbox.classList.remove('flex');
+                videoPlayer.src = ""; // Stop video playback
+            }, 300);
+        };
+
+        // --- Close Lightboxes by clicking outside or pressing ESC ---
+        window.addEventListener('click', (e) => {
+            if (e.target === imageLightbox) closeImageLightbox();
+            if (e.target === videoLightbox) closeVideoLightbox();
+        });
+
+        window.addEventListener('keydown', (e) => {
+            if (e.key === "Escape") {
+                if (!imageLightbox.classList.contains('hidden')) closeImageLightbox();
+                if (!videoLightbox.classList.contains('hidden')) closeVideoLightbox();
+            }
+        });
+
+    </script>
+</body>
+</html>
